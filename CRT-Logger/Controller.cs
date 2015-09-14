@@ -14,10 +14,10 @@ namespace CRT_Logger
         public Controller(Gui gui)
         {
             this.gui = gui;
-            gui.testButtonClick += new Gui.testButtonClickHandler(OnTestButtonClick);
+            gui.testButtonClick += OnTestButtonClick;
 
             ticker = new Services.Ticker(1000);
-            ticker.tick += new Services.Ticker.tickHandler(OnTick);
+            ticker.tick += OnTick;
         }
 
         private void OnTestButtonClick(object o, EventArgs e)
