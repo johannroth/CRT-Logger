@@ -16,7 +16,11 @@ namespace CRT_Logger
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Gui gui = new Gui();
+            Controller controller = new Controller(gui);
+
+            Application.Run(gui);
         }
     }
 }
