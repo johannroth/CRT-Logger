@@ -1,3 +1,3 @@
 # CRT-Logger
 
-Johann ist hier!?
+Software zum Loggen von CRT-Parametern während Pilotstudie
