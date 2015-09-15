@@ -16,9 +16,9 @@ namespace CRT_Logger
         {
             this.gui = gui;
 
-            // Eventhandler for ButtonClick event
+            // Eventhandler for ButtonClick events
             gui.tickerToggleButtonClick += OnTickerToggleButtonClick;
-
+            gui.modeButtonClick += OnModeButtonClick;
             // Start a new clock
             clock = new Services.Clock();
 
@@ -39,6 +39,16 @@ namespace CRT_Logger
                 setGuiTime();
             }
             
+        }
+        private void OnModeButtonClick(string modeCode, EventArgs e)
+        {
+            Console.Beep();
+            
+            // Increase Mode Counter
+            
+            // Write back increased mode count
+
+            // Write line in log
         }
 
         // Gets Time from clock and pushes it to gui

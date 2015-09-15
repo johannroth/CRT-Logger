@@ -24,12 +24,11 @@ namespace CRT_Logger
         public delegate void setUiClockTime(string time);
 
         // Variable to remember the last-clicked button
-        Button lastClicked = null;
+        private Button lastClicked = null;
 
         public Gui()
         {
             InitializeComponent();
-            // setUiClockTimeDelegate = new setUiClockTime(setClockTime);
         }
 
         // Test buttons in gui
@@ -54,12 +53,12 @@ namespace CRT_Logger
         }
         private void testMode1Button_Click(object sender, EventArgs e)
         {
-            //modeButtonClick("testMode1", null);
+            modeButtonClick("testMode1", null);
             setLastClicked(testMode1Button);
         }
         private void testMode2Button_Click(object sender, EventArgs e)
         {
-            //modeButtonClick("testMode2", null);
+            modeButtonClick("testMode2", null);
             setLastClicked(testMode2Button);
         }
 
@@ -75,6 +74,11 @@ namespace CRT_Logger
             {
                 clockTimeLabel.Text = time;
             }
+        }
+
+        private void resetModeCounters()
+        {
+
         }
     }
 }
