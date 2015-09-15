@@ -23,7 +23,7 @@ namespace CRT_Logger
         public Gui()
         {
             InitializeComponent();
-            setUiClockTimeDelegate = new setUiClockTime(setClockTime);
+            //setUiClockTimeDelegate = new setUiClockTime(setClockTime);
         }
 
         private void tickerToggleButton_Click(object sender, EventArgs e)
@@ -36,9 +36,18 @@ namespace CRT_Logger
             timeLabel.Text = System.DateTime.Now.ToString("dd.MM. HH:mm:ss.fff");
         }
 
-        private void setClockTime(string time)
+        public void setClockTime(string time)
         {
-            clockTimeLabel.Text = time;
+            if (clockTimeLabel.InvokeRequired)
+            {
+                setUiClockTimeDelegate = new setUiClockTime(setClockTime);
+                Invoke(setUiClockTimeDelegate, 
+                new object[] { time });
+            }
+            else
+            {
+                clockTimeLabel.Text = time;
+            }
         }
 
     }

@@ -30,19 +30,24 @@ namespace CRT_Logger
         private void OnTickerToggleButtonClick(object o, EventArgs e)
         {
             secondTicker.toggleTicker();
-            gui.Invoke(gui.setUiClockTimeDelegate, new object[] { "test" });
+            gui.setClockTime("test");
         }
 
+        // 
         private void OnTick(Services.Ticker source)
         {
-            Console.Beep();
-            setGuiTime();
+            if (source == secondTicker)
+            {
+                Console.Beep();
+                setGuiTime();
+            }
+            
         }
 
+        // Zeit aus Clock holen und an Gui weitergeben
         private void setGuiTime()
         {
-            gui.Invoke(gui.setUiClockTimeDelegate, 
-                new object[] { System.DateTime.Now.ToString("dd.MM. HH:mm:ss") });
+            gui.setClockTime(clock.getDateTime().ToString("dd.MM. HH:mm:ss"));
         }
     }
 }
