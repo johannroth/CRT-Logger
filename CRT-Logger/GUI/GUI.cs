@@ -13,12 +13,17 @@ namespace CRT_Logger
     public partial class Gui : Form
     {
 
-        public event testButtonClickHandler tickerToggleButtonClick;
-        public delegate void testButtonClickHandler(Object source, EventArgs e);
+        public event tickerToggleButtonClickHandler tickerToggleButtonClick;
+        public delegate void tickerToggleButtonClickHandler(Object source, EventArgs e);
+
+        // Definition of delegate, so that external threads can call the method
+        public delegate void setUiClockTime(string time);
+        public setUiClockTime setUiClockTimeDelegate;
 
         public Gui()
         {
             InitializeComponent();
+            setUiClockTimeDelegate = new setUiClockTime(setClockTime);
         }
 
         private void tickerToggleButton_Click(object sender, EventArgs e)
@@ -31,7 +36,7 @@ namespace CRT_Logger
             timeLabel.Text = System.DateTime.Now.ToString("dd.MM. HH:mm:ss.fff");
         }
 
-        public void setClockTime(string time)
+        private void setClockTime(string time)
         {
             clockTimeLabel.Text = time;
         }
