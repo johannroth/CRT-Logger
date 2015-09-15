@@ -13,19 +13,28 @@ namespace CRT_Logger
     public partial class Gui : Form
     {
 
-        public event testButtonClickHandler testButtonClick;
+        public event testButtonClickHandler tickerToggleButtonClick;
         public delegate void testButtonClickHandler(Object source, EventArgs e);
-
-
 
         public Gui()
         {
             InitializeComponent();
         }
 
-        private void testButton_Click(object sender, EventArgs e)
+        private void tickerToggleButton_Click(object sender, EventArgs e)
         {
-            testButtonClick(this, null);
+            tickerToggleButtonClick(this, null);
         }
+
+        private void timeToStringButton_Click(object sender, EventArgs e)
+        {
+            timeLabel.Text = System.DateTime.Now.ToString("dd.MM. HH:mm:ss.fff");
+        }
+
+        public void setClockTime(string time)
+        {
+            clockTimeLabel.Text = time;
+        }
+
     }
 }

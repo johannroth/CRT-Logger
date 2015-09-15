@@ -9,25 +9,40 @@ namespace CRT_Logger
     public class Controller
     {
         private Gui gui;
-        private Services.Ticker ticker;
+        private Services.Clock clock;
+        private Services.Ticker secondTicker;
 
         public Controller(Gui gui)
         {
             this.gui = gui;
-            gui.testButtonClick += OnTestButtonClick;
 
-            ticker = new Services.Ticker(1000);
-            ticker.tick += OnTick;
+            // Eventhandler für ButtonClick Event
+            gui.tickerToggleButtonClick += OnTickerToggleButtonClick;
+
+            // Clock instanzieren
+            clock = new Services.Clock();
+
+            // Ticker instanzieren
+            secondTicker = new Services.Ticker(1000);
+            secondTicker.tick += OnTick;
         }
 
-        private void OnTestButtonClick(object o, EventArgs e)
+        private void OnTickerToggleButtonClick(object o, EventArgs e)
         {
-            ticker.toggleTicker();
+            secondTicker.toggleTicker();
+            gui.setClockTime("test");
         }
 
         private void OnTick(Services.Ticker source)
         {
             Console.Beep();
+            setGuiTime();
+        }
+
+        private void setGuiTime()
+        {
+            gui.setClockTime("blub");
+            //System.DateTime.Now.ToString("dd.MM. HH:mm:ss.fff")
         }
     }
 }
