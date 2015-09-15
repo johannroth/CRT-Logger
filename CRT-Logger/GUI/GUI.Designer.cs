@@ -32,6 +32,8 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.timeToStringButton = new System.Windows.Forms.Button();
             this.clockTimeLabel = new System.Windows.Forms.Label();
+            this.testMode1Button = new System.Windows.Forms.Button();
+            this.testMode2Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tickerToggleButton
@@ -74,11 +76,35 @@
             this.clockTimeLabel.TabIndex = 1;
             this.clockTimeLabel.Text = "clockTimeLabel";
             // 
+            // testMode1Button
+            // 
+            this.testMode1Button.AutoSize = true;
+            this.testMode1Button.Location = new System.Drawing.Point(54, 177);
+            this.testMode1Button.Name = "testMode1Button";
+            this.testMode1Button.Size = new System.Drawing.Size(84, 27);
+            this.testMode1Button.TabIndex = 3;
+            this.testMode1Button.Text = "testMode1";
+            this.testMode1Button.UseVisualStyleBackColor = true;
+            this.testMode1Button.Click += new System.EventHandler(this.testMode1Button_Click);
+            // 
+            // testMode2Button
+            // 
+            this.testMode2Button.AutoSize = true;
+            this.testMode2Button.Location = new System.Drawing.Point(54, 218);
+            this.testMode2Button.Name = "testMode2Button";
+            this.testMode2Button.Size = new System.Drawing.Size(84, 27);
+            this.testMode2Button.TabIndex = 3;
+            this.testMode2Button.Text = "testMode2";
+            this.testMode2Button.UseVisualStyleBackColor = true;
+            this.testMode2Button.Click += new System.EventHandler(this.testMode2Button_Click);
+            // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 321);
+            this.Controls.Add(this.testMode2Button);
+            this.Controls.Add(this.testMode1Button);
             this.Controls.Add(this.timeToStringButton);
             this.Controls.Add(this.clockTimeLabel);
             this.Controls.Add(this.timeLabel);
@@ -97,6 +123,8 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button timeToStringButton;
         private System.Windows.Forms.Label clockTimeLabel;
+        private System.Windows.Forms.Button testMode1Button;
+        private System.Windows.Forms.Button testMode2Button;
     }
 }
 

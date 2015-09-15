@@ -16,13 +16,13 @@ namespace CRT_Logger
         {
             this.gui = gui;
 
-            // Eventhandler für ButtonClick Event
+            // Eventhandler for ButtonClick event
             gui.tickerToggleButtonClick += OnTickerToggleButtonClick;
 
-            // Clock instanzieren
+            // Start a new clock
             clock = new Services.Clock();
 
-            // Ticker instanzieren
+            // Start a new ticker
             secondTicker = new Services.Ticker(1000);
             secondTicker.tick += OnTick;
         }
@@ -30,10 +30,7 @@ namespace CRT_Logger
         private void OnTickerToggleButtonClick(object o, EventArgs e)
         {
             secondTicker.toggleTicker();
-            gui.setClockTime("test");
         }
-
-        // 
         private void OnTick(Services.Ticker source)
         {
             if (source == secondTicker)
@@ -44,10 +41,11 @@ namespace CRT_Logger
             
         }
 
-        // Zeit aus Clock holen und an Gui weitergeben
+        // Gets Time from clock and pushes it to gui
         private void setGuiTime()
         {
-            gui.setClockTime(clock.getDateTime().ToString("dd.MM. HH:mm:ss"));
+            string time = clock.getDateTime().ToString("dd.MM. HH:mm:ss");
+            gui.setClockTime(time);
         }
     }
 }
