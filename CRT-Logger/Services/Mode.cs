@@ -51,5 +51,9 @@ namespace CRT_Logger.Services
         {
             modeCount = 0;
         }
+        public bool isReferenceMode()
+        {
+            return referenceMode;
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace CRT_Logger
 
         // Definition of delegates, so that external threads can call the methods
         public delegate void setUiClockTime(string time);
-        public delegate void setUiModeCount(Label modeCounterLabel, int modeCount);
+        public delegate void setUiModeCount(Label modeCounterLabel, int modeCount, bool isDone);
         public delegate void setUiModeStatus(Button modeButton, bool lastClicked);
 
         public Gui()
@@ -68,7 +68,7 @@ namespace CRT_Logger
             modeButtonClick("AV80", null);
         }
 
-        // Methods to set GUI elements from external threads
+        // Methods to set GUI elements (safe to call from external threads).
         public void setClockTime(string time)
         {
             if (clockTimeLabel.InvokeRequired)
@@ -81,16 +81,24 @@ namespace CRT_Logger
                 clockTimeLabel.Text = time;
             }
         }
-        public void setModeCount(Label modeCounterLabel, int modeCount)
+        public void setModeCount(Label modeCounterLabel, int modeCount, bool isDone)
         {
             if (modeCounterLabel.InvokeRequired)
             {
                 setUiModeCount d = new setUiModeCount(setModeCount);
-                Invoke(d, new object[] { modeCount });
+                Invoke(d, new object[] { modeCounterLabel, modeCount, isDone});
             }
             else
             {
                 modeCounterLabel.Text = modeCount.ToString();
+                if (isDone)
+                {
+                    modeCounterLabel.BackColor = Color.PaleGreen;
+                }
+                else
+                {
+                    modeCounterLabel.BackColor = SystemColors.Control;
+                }
             }
         }
         public void setModeStatus(Button modeButton, bool lastClicked)

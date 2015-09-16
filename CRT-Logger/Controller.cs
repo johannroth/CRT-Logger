@@ -65,15 +65,22 @@ namespace CRT_Logger
             Button modeButton = mode.getModeButton();
 
             // Increase Mode Counter.
-            // Only if not lastClicked
-            // Only if not idle mode, idle mode does not have
-            // a counter thus no label.
+            // Only if not already clicked and only if not idle mode, idle mode
+            // does not have a counter thus no label.
             if (modeID != "Idle" && (modeButton != lastClickedButton))
             {
                 modeLabel = mode.getModeCounterLabel();
                 int count = mode.increaseModeCount();
-                // Write back increased mode count.
-                gui.setModeCount(modeLabel, count);
+
+                // Checks if mode is no reference mode and colors it, if needed.
+                bool isDone = false;
+                if (!mode.isReferenceMode())
+                {
+                    isDone = (count >= 3);
+                }
+
+                // Write back increased mode count and done-flag.
+                gui.setModeCount(modeLabel, count, isDone);
             }
             
             // Register clicked mode button as last clicked button
