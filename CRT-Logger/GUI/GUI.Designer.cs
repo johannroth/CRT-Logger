@@ -37,6 +37,8 @@
             this.modeAV40Label = new System.Windows.Forms.Label();
             this.modeAV80Label = new System.Windows.Forms.Label();
             this.modeIdleButton = new System.Windows.Forms.Button();
+            this.modeAV120Button = new System.Windows.Forms.Button();
+            this.modeAV120Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tickerToggleButton
@@ -130,13 +132,36 @@
             this.modeIdleButton.UseVisualStyleBackColor = true;
             this.modeIdleButton.Click += new System.EventHandler(this.modeIdleButton_Click);
             // 
+            // modeAV120Button
+            // 
+            this.modeAV120Button.AutoSize = true;
+            this.modeAV120Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modeAV120Button.Location = new System.Drawing.Point(54, 264);
+            this.modeAV120Button.Name = "modeAV120Button";
+            this.modeAV120Button.Size = new System.Drawing.Size(84, 27);
+            this.modeAV120Button.TabIndex = 3;
+            this.modeAV120Button.Text = "AV 120";
+            this.modeAV120Button.UseVisualStyleBackColor = true;
+            this.modeAV120Button.Click += new System.EventHandler(this.modeAV120Button_Click);
+            // 
+            // modeAV120Label
+            // 
+            this.modeAV120Label.AutoSize = true;
+            this.modeAV120Label.Location = new System.Drawing.Point(157, 274);
+            this.modeAV120Label.Name = "modeAV120Label";
+            this.modeAV120Label.Size = new System.Drawing.Size(16, 17);
+            this.modeAV120Label.TabIndex = 4;
+            this.modeAV120Label.Text = "0";
+            // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 321);
+            this.Controls.Add(this.modeAV120Label);
             this.Controls.Add(this.modeAV80Label);
             this.Controls.Add(this.modeAV40Label);
+            this.Controls.Add(this.modeAV120Button);
             this.Controls.Add(this.modeAV80Button);
             this.Controls.Add(this.modeIdleButton);
             this.Controls.Add(this.modeAV40Button);
@@ -163,6 +188,8 @@
         private System.Windows.Forms.Label modeAV40Label;
         private System.Windows.Forms.Label modeAV80Label;
         private System.Windows.Forms.Button modeIdleButton;
+        private System.Windows.Forms.Button modeAV120Button;
+        private System.Windows.Forms.Label modeAV120Label;
     }
 }
 

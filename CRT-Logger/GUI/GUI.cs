@@ -37,11 +37,13 @@ namespace CRT_Logger
 
         // Method to initialize Modes. Careful when changing oder adding modeIDs, remember to change
         // modeID in buttonClick event too!
+        // (sender, modeID, modeLogID, modeCounterLabel, modeButton, referenceMode, e)
         public void initializeModes()
         {
             modeAdd(this, "Idle", "Idle", null, modeIdleButton, false, null);
             modeAdd(this, "AV40", "AV 40", modeAV40Label, modeAV40Button, false, null);
             modeAdd(this, "AV80", "AV 80", modeAV80Label, modeAV80Button, false, null);
+            modeAdd(this, "AV120", "AV 120", modeAV120Label, modeAV120Button, true, null);
         }
 
         // Test buttons in gui
@@ -66,6 +68,10 @@ namespace CRT_Logger
         private void modeAV80Button_Click(object sender, EventArgs e)
         {
             modeButtonClick("AV80", null);
+        }
+        private void modeAV120Button_Click(object sender, EventArgs e)
+        {
+            modeButtonClick("AV120", null);
         }
 
         // Methods to set GUI elements (safe to call from external threads).
