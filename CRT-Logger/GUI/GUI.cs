@@ -126,10 +126,6 @@ namespace CRT_Logger
                 }
             }
         }
-        private void resetModeCounters()
-        {
-
-        }
     }
 }
     

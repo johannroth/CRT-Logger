@@ -61,7 +61,6 @@ namespace CRT_Logger
         private void OnModeButtonClick(string modeID, EventArgs e)
         {
             Services.Mode mode = (Services.Mode)modes[modeID];
-            Label modeLabel = null;
             Button modeButton = mode.getModeButton();
 
             // Increase Mode Counter.
@@ -69,7 +68,7 @@ namespace CRT_Logger
             // does not have a counter thus no label.
             if (modeID != "Idle" && (modeButton != lastClickedButton))
             {
-                modeLabel = mode.getModeCounterLabel();
+                Label modeLabel = mode.getModeCounterLabel();
                 int count = mode.increaseModeCount();
 
                 // Checks if mode is no reference mode and colors it, if needed.
@@ -100,6 +99,20 @@ namespace CRT_Logger
         {
             string time = clock.getDateTime().ToString("dd.MM. HH:mm:ss");
             gui.setClockTime(time);
+        }
+        // Resets all ModeCounters for all Modes in modes Hashtable.
+        private void resetModeCounters()
+        {
+            foreach (DictionaryEntry entry in modes)
+            {
+                Services.Mode mode = (Services.Mode)entry.Value;
+                mode.resetModeCount();
+                Label modeCounterLabel = mode.getModeCounterLabel();
+                if (modeCounterLabel != null)
+                {
+                    gui.setModeCount(modeCounterLabel, 0, false);
+                }
+            }
         }
     }
 }
