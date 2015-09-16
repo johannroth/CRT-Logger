@@ -16,14 +16,19 @@ namespace CRT_Logger.Services
         private int modeCount = 0;
         private Label modeCounterLabel;
         private Button modeButton;
+        private TextBox modeTextBox;
+        private string modeType;
 
-        public Mode(Label modeCounterLabel, Button modeButton, string modeID, string modeLogID, bool referenceMode)
+        public Mode(Label modeCounterLabel, Button modeButton, TextBox modeTextBox, string modeID, string modeLogID,
+            string modeType, bool referenceMode)
         {
             this.modeCounterLabel = modeCounterLabel;
             this.modeID = modeID;
             this.modeLogID = modeLogID;
             this.referenceMode = referenceMode;
             this.modeButton = modeButton;
+            this.modeTextBox = modeTextBox;
+            this.modeType = modeType;
         }
 
         public Label getModeCounterLabel()
@@ -34,9 +39,17 @@ namespace CRT_Logger.Services
         {
             return modeButton;
         }
+        public TextBox getModeTextBox()
+        {
+            return modeTextBox;
+        }
         public string getModeID()
         {
             return modeID;
+        }
+        public string getModeType()
+        {
+            return modeType;
         }
         public void setModeLogID(string modeLogID)
         {

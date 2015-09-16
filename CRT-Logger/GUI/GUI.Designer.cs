@@ -39,16 +39,21 @@
             this.modeIdleButton = new System.Windows.Forms.Button();
             this.modeAV120Button = new System.Windows.Forms.Button();
             this.modeAV120Label = new System.Windows.Forms.Label();
+            this.modeCustomAV1Button = new System.Windows.Forms.Button();
+            this.modeCustomAV1TextBox = new System.Windows.Forms.TextBox();
+            this.modeCustomAV1Label = new System.Windows.Forms.Label();
+            this.statusMessageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tickerToggleButton
             // 
-            this.tickerToggleButton.Location = new System.Drawing.Point(35, 68);
+            this.tickerToggleButton.AutoSize = true;
+            this.tickerToggleButton.Location = new System.Drawing.Point(35, 13);
             this.tickerToggleButton.Margin = new System.Windows.Forms.Padding(4);
             this.tickerToggleButton.Name = "tickerToggleButton";
-            this.tickerToggleButton.Size = new System.Drawing.Size(100, 28);
+            this.tickerToggleButton.Size = new System.Drawing.Size(204, 28);
             this.tickerToggleButton.TabIndex = 0;
-            this.tickerToggleButton.Text = "Ticker toggle";
+            this.tickerToggleButton.Text = "Ticker toggle (and reset)";
             this.tickerToggleButton.UseVisualStyleBackColor = true;
             this.tickerToggleButton.Click += new System.EventHandler(this.tickerToggleButton_Click);
             // 
@@ -75,7 +80,7 @@
             // clockTimeLabel
             // 
             this.clockTimeLabel.AutoSize = true;
-            this.clockTimeLabel.Location = new System.Drawing.Point(32, 110);
+            this.clockTimeLabel.Location = new System.Drawing.Point(45, 54);
             this.clockTimeLabel.Name = "clockTimeLabel";
             this.clockTimeLabel.Size = new System.Drawing.Size(106, 17);
             this.clockTimeLabel.TabIndex = 1;
@@ -86,7 +91,7 @@
             this.modeAV40Button.AutoSize = true;
             this.modeAV40Button.Location = new System.Drawing.Point(54, 177);
             this.modeAV40Button.Name = "modeAV40Button";
-            this.modeAV40Button.Size = new System.Drawing.Size(84, 27);
+            this.modeAV40Button.Size = new System.Drawing.Size(97, 27);
             this.modeAV40Button.TabIndex = 3;
             this.modeAV40Button.Text = "AV 40";
             this.modeAV40Button.UseVisualStyleBackColor = true;
@@ -97,7 +102,7 @@
             this.modeAV80Button.AutoSize = true;
             this.modeAV80Button.Location = new System.Drawing.Point(54, 218);
             this.modeAV80Button.Name = "modeAV80Button";
-            this.modeAV80Button.Size = new System.Drawing.Size(84, 27);
+            this.modeAV80Button.Size = new System.Drawing.Size(97, 27);
             this.modeAV80Button.TabIndex = 3;
             this.modeAV80Button.Text = "AV 80";
             this.modeAV80Button.UseVisualStyleBackColor = true;
@@ -138,7 +143,7 @@
             this.modeAV120Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modeAV120Button.Location = new System.Drawing.Point(54, 264);
             this.modeAV120Button.Name = "modeAV120Button";
-            this.modeAV120Button.Size = new System.Drawing.Size(84, 27);
+            this.modeAV120Button.Size = new System.Drawing.Size(97, 27);
             this.modeAV120Button.TabIndex = 3;
             this.modeAV120Button.Text = "AV 120";
             this.modeAV120Button.UseVisualStyleBackColor = true;
@@ -153,15 +158,55 @@
             this.modeAV120Label.TabIndex = 4;
             this.modeAV120Label.Text = "0";
             // 
+            // modeCustomAV1Button
+            // 
+            this.modeCustomAV1Button.AutoSize = true;
+            this.modeCustomAV1Button.Location = new System.Drawing.Point(54, 307);
+            this.modeCustomAV1Button.Name = "modeCustomAV1Button";
+            this.modeCustomAV1Button.Size = new System.Drawing.Size(55, 27);
+            this.modeCustomAV1Button.TabIndex = 3;
+            this.modeCustomAV1Button.Text = "cAV 1";
+            this.modeCustomAV1Button.UseVisualStyleBackColor = true;
+            this.modeCustomAV1Button.Click += new System.EventHandler(this.modeCustomAV1Button_Click);
+            // 
+            // modeCustomAV1TextBox
+            // 
+            this.modeCustomAV1TextBox.Location = new System.Drawing.Point(115, 312);
+            this.modeCustomAV1TextBox.Name = "modeCustomAV1TextBox";
+            this.modeCustomAV1TextBox.Size = new System.Drawing.Size(36, 22);
+            this.modeCustomAV1TextBox.TabIndex = 5;
+            // 
+            // modeCustomAV1Label
+            // 
+            this.modeCustomAV1Label.AutoSize = true;
+            this.modeCustomAV1Label.Location = new System.Drawing.Point(157, 317);
+            this.modeCustomAV1Label.Name = "modeCustomAV1Label";
+            this.modeCustomAV1Label.Size = new System.Drawing.Size(16, 17);
+            this.modeCustomAV1Label.TabIndex = 4;
+            this.modeCustomAV1Label.Text = "0";
+            // 
+            // statusMessageLabel
+            // 
+            this.statusMessageLabel.AutoSize = true;
+            this.statusMessageLabel.Location = new System.Drawing.Point(292, 317);
+            this.statusMessageLabel.Name = "statusMessageLabel";
+            this.statusMessageLabel.Size = new System.Drawing.Size(48, 17);
+            this.statusMessageLabel.TabIndex = 6;
+            this.statusMessageLabel.Text = "Status";
+            // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 355);
+            this.Controls.Add(this.statusMessageLabel);
+            this.Controls.Add(this.modeCustomAV1TextBox);
+            this.Controls.Add(this.modeCustomAV1Label);
             this.Controls.Add(this.modeAV120Label);
             this.Controls.Add(this.modeAV80Label);
             this.Controls.Add(this.modeAV40Label);
             this.Controls.Add(this.modeAV120Button);
+            this.Controls.Add(this.modeCustomAV1Button);
             this.Controls.Add(this.modeAV80Button);
             this.Controls.Add(this.modeIdleButton);
             this.Controls.Add(this.modeAV40Button);
@@ -190,6 +235,10 @@
         private System.Windows.Forms.Button modeIdleButton;
         private System.Windows.Forms.Button modeAV120Button;
         private System.Windows.Forms.Label modeAV120Label;
+        private System.Windows.Forms.Button modeCustomAV1Button;
+        private System.Windows.Forms.TextBox modeCustomAV1TextBox;
+        private System.Windows.Forms.Label modeCustomAV1Label;
+        private System.Windows.Forms.Label statusMessageLabel;
     }
 }
 

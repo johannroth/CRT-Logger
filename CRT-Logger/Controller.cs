@@ -43,6 +43,7 @@ namespace CRT_Logger
         {
             Console.Beep();
             secondTicker.toggleTicker();
+            resetModeCounters();
         }
         private void OnTick(Services.Ticker source)
         {
@@ -53,15 +54,26 @@ namespace CRT_Logger
             
         }
         private void OnModeAdd(object sender, string modeID, string modeLogID, Label modeCounterLabel,
-                               Button modeButton, bool referenceMode, EventArgs e)
+                               Button modeButton, TextBox modeTextBox, string modeType, bool referenceMode, EventArgs e)
         {
-            Services.Mode newMode = new Services.Mode(modeCounterLabel, modeButton, modeID, modeLogID, referenceMode);
+            Services.Mode newMode = new Services.Mode(modeCounterLabel, modeButton, modeTextBox, modeID, modeLogID, modeType, referenceMode);
             modes.Add(modeID, newMode);
         }
         private void OnModeButtonClick(string modeID, EventArgs e)
         {
             Services.Mode mode = (Services.Mode)modes[modeID];
             Button modeButton = mode.getModeButton();
+            TextBox modeTextBox = mode.getModeTextBox();
+
+            // If button was a custom mode button, set modeLogID to content of textbox
+            if (modeTextBox != null)
+            {
+                string interval = gui.getCustomModeInterval(modeTextBox);
+                string modeType = mode.getModeType();
+                string newLogID = modeType + " " + interval;
+                mode.setModeLogID(newLogID);
+            }
+
 
             // Increase Mode Counter.
             // Only if not already clicked and only if not idle mode, idle mode
@@ -101,6 +113,7 @@ namespace CRT_Logger
             gui.setClockTime(time);
         }
         // Resets all ModeCounters for all Modes in modes Hashtable.
+        // Also resets lastClicked Status
         private void resetModeCounters()
         {
             foreach (DictionaryEntry entry in modes)
@@ -112,6 +125,9 @@ namespace CRT_Logger
                 {
                     gui.setModeCount(modeCounterLabel, 0, false);
                 }
+                Button modeButton = mode.getModeButton();
+                gui.setModeStatus(modeButton, false);
+                lastClickedButton = null;
             }
         }
     }

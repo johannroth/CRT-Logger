@@ -19,7 +19,8 @@ namespace CRT_Logger
         // Event to add a Mode
         public event modeAddHandler modeAdd;
         public delegate void modeAddHandler(object sender, string modeID, string modeLogID,
-            Label modeCounterLabel, Button modeButton, bool referenceMode, EventArgs e);
+            Label modeCounterLabel, Button modeButton, TextBox modeTextBox, string modeType,
+            bool referenceMode, EventArgs e);
 
         // Event for the click of any modeButton
         public event modeButtonClickHandler modeButtonClick;
@@ -29,6 +30,7 @@ namespace CRT_Logger
         public delegate void setUiClockTime(string time);
         public delegate void setUiModeCount(Label modeCounterLabel, int modeCount, bool isDone);
         public delegate void setUiModeStatus(Button modeButton, bool lastClicked);
+        public delegate void setUiStatus(string status);
 
         public Gui()
         {
@@ -37,13 +39,14 @@ namespace CRT_Logger
 
         // Method to initialize Modes. Careful when changing oder adding modeIDs, remember to change
         // modeID in buttonClick event too!
-        // (sender, modeID, modeLogID, modeCounterLabel, modeButton, referenceMode, e)
+        // (sender, modeID, modeLogID, modeCounterLabel, modeButton, modeTextBox, modeType, referenceMode, e)
         public void initializeModes()
         {
-            modeAdd(this, "Idle", "Idle", null, modeIdleButton, false, null);
-            modeAdd(this, "AV40", "AV 40", modeAV40Label, modeAV40Button, false, null);
-            modeAdd(this, "AV80", "AV 80", modeAV80Label, modeAV80Button, false, null);
-            modeAdd(this, "AV120", "AV 120", modeAV120Label, modeAV120Button, true, null);
+            modeAdd(this, "Idle", "Idle 0", null, modeIdleButton, null, "Idle", false, null);
+            modeAdd(this, "AV40", "AV 40", modeAV40Label, modeAV40Button, null, "AV", false, null);
+            modeAdd(this, "AV80", "AV 80", modeAV80Label, modeAV80Button, null, "AV", false, null);
+            modeAdd(this, "AV120", "AV 120", modeAV120Label, modeAV120Button, null, "AV", true, null);
+            modeAdd(this, "cAV1", "AV 0", modeCustomAV1Label, modeCustomAV1Button, modeCustomAV1TextBox, "AV", false, null);
         }
 
         // Test buttons in gui
@@ -72,6 +75,10 @@ namespace CRT_Logger
         private void modeAV120Button_Click(object sender, EventArgs e)
         {
             modeButtonClick("AV120", null);
+        }
+        private void modeCustomAV1Button_Click(object sender, EventArgs e)
+        {
+            modeButtonClick("cAV1", null);
         }
 
         // Methods to set GUI elements (safe to call from external threads).
@@ -125,6 +132,24 @@ namespace CRT_Logger
                     modeButton.BackColor = SystemColors.Control;
                 }
             }
+        }
+        public void setStatus(string status)
+        {
+            if (statusMessageLabel.InvokeRequired)
+            {
+                setUiStatus d = new setUiStatus(setStatus);
+                Invoke(d, new object[] { status });
+            }
+            else
+            {
+                statusMessageLabel.Text = status;
+            }
+        }
+
+        // Method to read out Custom Interval
+        public string getCustomModeInterval(TextBox modeTextbox)
+        {
+            return modeTextbox.Text;
         }
     }
 }
