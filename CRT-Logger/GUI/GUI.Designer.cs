@@ -32,8 +32,11 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.timeToStringButton = new System.Windows.Forms.Button();
             this.clockTimeLabel = new System.Windows.Forms.Label();
-            this.testMode1Button = new System.Windows.Forms.Button();
-            this.testMode2Button = new System.Windows.Forms.Button();
+            this.modeAV40Button = new System.Windows.Forms.Button();
+            this.modeAV80Button = new System.Windows.Forms.Button();
+            this.modeAV40Label = new System.Windows.Forms.Label();
+            this.modeAV80Label = new System.Windows.Forms.Label();
+            this.modeIdleButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tickerToggleButton
@@ -76,35 +79,67 @@
             this.clockTimeLabel.TabIndex = 1;
             this.clockTimeLabel.Text = "clockTimeLabel";
             // 
-            // testMode1Button
+            // modeAV40Button
             // 
-            this.testMode1Button.AutoSize = true;
-            this.testMode1Button.Location = new System.Drawing.Point(54, 177);
-            this.testMode1Button.Name = "testMode1Button";
-            this.testMode1Button.Size = new System.Drawing.Size(84, 27);
-            this.testMode1Button.TabIndex = 3;
-            this.testMode1Button.Text = "testMode1";
-            this.testMode1Button.UseVisualStyleBackColor = true;
-            this.testMode1Button.Click += new System.EventHandler(this.testMode1Button_Click);
+            this.modeAV40Button.AutoSize = true;
+            this.modeAV40Button.Location = new System.Drawing.Point(54, 177);
+            this.modeAV40Button.Name = "modeAV40Button";
+            this.modeAV40Button.Size = new System.Drawing.Size(84, 27);
+            this.modeAV40Button.TabIndex = 3;
+            this.modeAV40Button.Text = "AV 40";
+            this.modeAV40Button.UseVisualStyleBackColor = true;
+            this.modeAV40Button.Click += new System.EventHandler(this.modeAV40Button_Click);
             // 
-            // testMode2Button
+            // modeAV80Button
             // 
-            this.testMode2Button.AutoSize = true;
-            this.testMode2Button.Location = new System.Drawing.Point(54, 218);
-            this.testMode2Button.Name = "testMode2Button";
-            this.testMode2Button.Size = new System.Drawing.Size(84, 27);
-            this.testMode2Button.TabIndex = 3;
-            this.testMode2Button.Text = "testMode2";
-            this.testMode2Button.UseVisualStyleBackColor = true;
-            this.testMode2Button.Click += new System.EventHandler(this.testMode2Button_Click);
+            this.modeAV80Button.AutoSize = true;
+            this.modeAV80Button.Location = new System.Drawing.Point(54, 218);
+            this.modeAV80Button.Name = "modeAV80Button";
+            this.modeAV80Button.Size = new System.Drawing.Size(84, 27);
+            this.modeAV80Button.TabIndex = 3;
+            this.modeAV80Button.Text = "AV 80";
+            this.modeAV80Button.UseVisualStyleBackColor = true;
+            this.modeAV80Button.Click += new System.EventHandler(this.modeAV80Button_Click);
+            // 
+            // modeAV40Label
+            // 
+            this.modeAV40Label.AutoSize = true;
+            this.modeAV40Label.Location = new System.Drawing.Point(157, 186);
+            this.modeAV40Label.Name = "modeAV40Label";
+            this.modeAV40Label.Size = new System.Drawing.Size(16, 17);
+            this.modeAV40Label.TabIndex = 4;
+            this.modeAV40Label.Text = "0";
+            // 
+            // modeAV80Label
+            // 
+            this.modeAV80Label.AutoSize = true;
+            this.modeAV80Label.Location = new System.Drawing.Point(157, 228);
+            this.modeAV80Label.Name = "modeAV80Label";
+            this.modeAV80Label.Size = new System.Drawing.Size(16, 17);
+            this.modeAV80Label.TabIndex = 4;
+            this.modeAV80Label.Text = "0";
+            // 
+            // modeIdleButton
+            // 
+            this.modeIdleButton.AutoSize = true;
+            this.modeIdleButton.Location = new System.Drawing.Point(54, 144);
+            this.modeIdleButton.Name = "modeIdleButton";
+            this.modeIdleButton.Size = new System.Drawing.Size(285, 27);
+            this.modeIdleButton.TabIndex = 3;
+            this.modeIdleButton.Text = "Idle Mode";
+            this.modeIdleButton.UseVisualStyleBackColor = true;
+            this.modeIdleButton.Click += new System.EventHandler(this.modeIdleButton_Click);
             // 
             // Gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 321);
-            this.Controls.Add(this.testMode2Button);
-            this.Controls.Add(this.testMode1Button);
+            this.Controls.Add(this.modeAV80Label);
+            this.Controls.Add(this.modeAV40Label);
+            this.Controls.Add(this.modeAV80Button);
+            this.Controls.Add(this.modeIdleButton);
+            this.Controls.Add(this.modeAV40Button);
             this.Controls.Add(this.timeToStringButton);
             this.Controls.Add(this.clockTimeLabel);
             this.Controls.Add(this.timeLabel);
@@ -123,8 +158,11 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button timeToStringButton;
         private System.Windows.Forms.Label clockTimeLabel;
-        private System.Windows.Forms.Button testMode1Button;
-        private System.Windows.Forms.Button testMode2Button;
+        private System.Windows.Forms.Button modeAV40Button;
+        private System.Windows.Forms.Button modeAV80Button;
+        private System.Windows.Forms.Label modeAV40Label;
+        private System.Windows.Forms.Label modeAV80Label;
+        private System.Windows.Forms.Button modeIdleButton;
     }
 }
 

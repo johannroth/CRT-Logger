@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Windows.Forms;
 
 namespace CRT_Logger
 {
@@ -11,6 +13,8 @@ namespace CRT_Logger
         private Gui gui;
         private Services.Clock clock;
         private Services.Ticker secondTicker;
+        private Button lastClickedButton = null;
+        private Hashtable modes;
 
         public Controller(Gui gui)
         {
@@ -19,34 +23,69 @@ namespace CRT_Logger
             // Eventhandler for ButtonClick events
             gui.tickerToggleButtonClick += OnTickerToggleButtonClick;
             gui.modeButtonClick += OnModeButtonClick;
+            // Eventhandler for adding a Mode
+            gui.modeAdd += OnModeAdd;
             // Start a new clock
             clock = new Services.Clock();
 
             // Start a new ticker
             secondTicker = new Services.Ticker(1000);
             secondTicker.tick += OnTick;
+
+            // Initialize Hashtable for saving used modes.
+            modes = new Hashtable();
+            // Initialize gui Modes.
+            gui.initializeModes();
         }
 
+        // Eventhandlers
         private void OnTickerToggleButtonClick(object o, EventArgs e)
         {
+            Console.Beep();
             secondTicker.toggleTicker();
         }
         private void OnTick(Services.Ticker source)
         {
             if (source == secondTicker)
             {
-                Console.Beep();
                 setGuiTime();
             }
             
         }
-        private void OnModeButtonClick(string modeCode, EventArgs e)
+        private void OnModeAdd(object sender, string modeID, string modeLogID, Label modeCounterLabel,
+                               Button modeButton, bool referenceMode, EventArgs e)
         {
-            Console.Beep();
+            Services.Mode newMode = new Services.Mode(modeCounterLabel, modeButton, modeID, modeLogID, referenceMode);
+            modes.Add(modeID, newMode);
+        }
+        private void OnModeButtonClick(string modeID, EventArgs e)
+        {
+            Services.Mode mode = (Services.Mode)modes[modeID];
+            Label modeLabel = null;
+            Button modeButton = mode.getModeButton();
+
+            mode.setModeLogID("test");
+
+            // Increase Mode Counter.
+            // Only if not lastClicked
+            // Only if not idle mode, idle mode does not have
+            // a counter thus no label.
+            if (modeID != "Idle" && (modeButton != lastClickedButton))
+            {
+                modeLabel = mode.getModeCounterLabel();
+                int count = mode.increaseModeCount();
+                // Write back increased mode count.
+                gui.setModeCount(modeLabel, count);
+            }
             
-            // Increase Mode Counter
-            
-            // Write back increased mode count
+            // Register clicked mode button as last clicked button
+            // and send current clicked-status to GUI.
+            if (lastClickedButton != null)
+            {
+                gui.setModeStatus(lastClickedButton, false);
+            }
+            lastClickedButton = mode.getModeButton();
+            gui.setModeStatus(lastClickedButton, true);
 
             // Write line in log
         }

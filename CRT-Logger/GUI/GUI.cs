@@ -16,19 +16,32 @@ namespace CRT_Logger
         public event tickerToggleButtonClickHandler tickerToggleButtonClick;
         public delegate void tickerToggleButtonClickHandler(Object source, EventArgs e);
 
+        // Event to add a Mode
+        public event modeAddHandler modeAdd;
+        public delegate void modeAddHandler(object sender, string modeID, string modeLogID,
+            Label modeCounterLabel, Button modeButton, bool referenceMode, EventArgs e);
+
         // Event for the click of any modeButton
         public event modeButtonClickHandler modeButtonClick;
         public delegate void modeButtonClickHandler(string modeCode, EventArgs e);
 
         // Definition of delegates, so that external threads can call the methods
         public delegate void setUiClockTime(string time);
-
-        // Variable to remember the last-clicked button
-        private Button lastClicked = null;
+        public delegate void setUiModeCount(Label modeCounterLabel, int modeCount);
+        public delegate void setUiModeStatus(Button modeButton, bool lastClicked);
 
         public Gui()
         {
             InitializeComponent();
+        }
+
+        // Method to initialize Modes. Careful when changing oder adding modeIDs, remember to change
+        // modeID in buttonClick event too!
+        public void initializeModes()
+        {
+            modeAdd(this, "Idle", "Idle", null, modeIdleButton, false, null);
+            modeAdd(this, "AV40", "AV 40", modeAV40Label, modeAV40Button, false, null);
+            modeAdd(this, "AV80", "AV 80", modeAV80Label, modeAV80Button, false, null);
         }
 
         // Test buttons in gui
@@ -42,27 +55,20 @@ namespace CRT_Logger
         }
 
         // Buttons to select modes
-        private void setLastClicked(Button button)
+        private void modeIdleButton_Click(object sender, EventArgs e)
         {
-            if (lastClicked != null)
-            {
-                lastClicked.BackColor = SystemColors.Control;
-            }
-            button.BackColor = Color.PaleGreen;
-            lastClicked = button;
+            modeButtonClick("Idle", null);
         }
-        private void testMode1Button_Click(object sender, EventArgs e)
+        private void modeAV40Button_Click(object sender, EventArgs e)
         {
-            modeButtonClick("testMode1", null);
-            setLastClicked(testMode1Button);
+            modeButtonClick("AV40", null);
         }
-        private void testMode2Button_Click(object sender, EventArgs e)
+        private void modeAV80Button_Click(object sender, EventArgs e)
         {
-            modeButtonClick("testMode2", null);
-            setLastClicked(testMode2Button);
+            modeButtonClick("AV80", null);
         }
 
-        // Method to set the time of the clock
+        // Methods to set GUI elements from external threads
         public void setClockTime(string time)
         {
             if (clockTimeLabel.InvokeRequired)
@@ -75,7 +81,37 @@ namespace CRT_Logger
                 clockTimeLabel.Text = time;
             }
         }
-
+        public void setModeCount(Label modeCounterLabel, int modeCount)
+        {
+            if (modeCounterLabel.InvokeRequired)
+            {
+                setUiModeCount d = new setUiModeCount(setModeCount);
+                Invoke(d, new object[] { modeCount });
+            }
+            else
+            {
+                modeCounterLabel.Text = modeCount.ToString();
+            }
+        }
+        public void setModeStatus(Button modeButton, bool lastClicked)
+        {
+            if (modeButton.InvokeRequired)
+            {
+                setUiModeStatus d = new setUiModeStatus(setModeStatus);
+                Invoke(d, new object[] { modeButton, lastClicked });
+            }
+            else
+            {
+                if (lastClicked)
+                {
+                    modeButton.BackColor = Color.PaleGreen;
+                }
+                else
+                {
+                    modeButton.BackColor = SystemColors.Control;
+                }
+            }
+        }
         private void resetModeCounters()
         {
 
