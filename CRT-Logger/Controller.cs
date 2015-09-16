@@ -64,8 +64,6 @@ namespace CRT_Logger
             Label modeLabel = null;
             Button modeButton = mode.getModeButton();
 
-            mode.setModeLogID("test");
-
             // Increase Mode Counter.
             // Only if not lastClicked
             // Only if not idle mode, idle mode does not have
