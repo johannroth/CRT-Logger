@@ -852,6 +852,7 @@
             this.closeButton.TabIndex = 9;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // patientFileButton
             // 
@@ -1051,6 +1052,7 @@
             this.Name = "LoggerGui";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "CRT-Logger";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoggerGui_FormClosing);
             this.modeAVLayoutPanel.ResumeLayout(false);
             this.modeAVLayoutPanel.PerformLayout();
             this.modeVVLayoutPanel.ResumeLayout(false);
