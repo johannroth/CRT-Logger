@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRT_Logger.Services
+namespace CRT_Logger
 {
-    class Clock
+    class StartStopEventArgs : EventArgs
     {
     }
 }

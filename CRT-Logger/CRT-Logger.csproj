@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1E951272-FB06-42EB-AC38-FABA01B4C04C}</ProjectGuid>
+    <ProjectGuid>{04F20BD5-3683-4116-9F0E-71080F8AB2C5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CRT_Logger</RootNamespace>
@@ -44,20 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller.cs" />
-    <Compile Include="GUI\Gui.cs">
+    <Compile Include="Control\LoggerController.cs" />
+    <Compile Include="ModeButtonClickEventArgs.cs" />
+    <Compile Include="Services\Clock.cs" />
+    <Compile Include="Services\Mode.cs" />
+    <Compile Include="Services\ModeManager.cs" />
+    <Compile Include="Services\Ticker.cs" />
+    <Compile Include="Services\TxtWriter.cs" />
+    <Compile Include="StartStopEventArgs.cs" />
+    <Compile Include="View\LoggerGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Gui.Designer.cs">
-      <DependentUpon>Gui.cs</DependentUpon>
+    <Compile Include="View\LoggerGui.Designer.cs">
+      <DependentUpon>LoggerGui.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Clock.cs" />
-    <Compile Include="Services\Mode.cs" />
-    <Compile Include="Services\Ticker.cs" />
-    <EmbeddedResource Include="GUI\GUI.resx">
-      <DependentUpon>Gui.cs</DependentUpon>
+    <Compile Include="View\PatientDataGui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientDataGui.Designer.cs">
+      <DependentUpon>PatientDataGui.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\LoggerGui.resx">
+      <DependentUpon>LoggerGui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -68,6 +78,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\PatientDataGui.resx">
+      <DependentUpon>PatientDataGui.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

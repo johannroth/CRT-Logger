@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>48</x>
+      <y>16</y>
+      <w>440</w>
+      <h>880</h>
+    </coordinates>
+    <panel_attributes>LoggerGui ( View )
+--
+- ModeManager modeManager
+
+- Button modeAV40Button, Label modeAV40Counter
+- Button modeAV80Button, Label modeAV80Counter
+- Button modeAV100Button, Label modeAV100Counter
+- Button modeAV120Button, Label modeAV120Counter
+- Button modeAV140Button, Label modeAV140Counter
+- Button modeAV160Button, Label modeAV160Counter
+- Button modeAV200Button, Label modeAV200Counter
+- Button modeAV240Button, Label modeAV240Counter
+- Button modeAV280Button, Label modeAV280Counter
+- Button modeAV320Button, Label modeAV320Counter
+
+- Button modeVVn80Button, Label modeVVn80Counter
+- Button modeVVn60Button, Label modeVVn60Counter
+- Button modeVVn40Button, Label modeVVn40Counter
+- Button modeVVn20Button, Label modeVVn20Counter
+- Button modeVV0Button, Label modeVV0Counter
+- Button modeVV20Button, Label modeVV20Counter
+- Button modeVV40Button, Label modeVV40Counter
+- Button modeVV60Button, Label modeVV60Counter
+- Button modeVV80Button, Label modeVV80Counter
+
+- Button modeAVcButton, Label modeAVcCounter, TextBox modeAVcTextBox
+- Button modeVVcButton, Label modeVVcCounter, TextBox modeVVcTextBox
+
+- Button modeCustomNoteButton, TextBox modeCustomNoteTextBox
+- Buttom modeIdleButton
+
+- Button startButton
+- Button stopButton
+
+- Label beginOfMeasurementLabel
+- Label timeInMeasurementLabel
+- Label timeInModeLabel
+
+- Label statusLabel
+
+- TextBox logTextBox
+--
++ delegate void modeButtonClickHandler(Object sender, ModeButtonClickEventArgs e)
++ event modeButtonClickHandler modeButtonClick
+
++ delegate void startStopEventHandler(Object sender, StartStopEventArgs e)
++ event startStopEventHandler startStopEvent
+--
++ Gui(modeManager)
+
+// Erstellt bestehende Modes und meldet diese beim Manager an
+- initializeModes()
+
++ string GetCustomText(textBox)
+
+++ void SetButtonStatus(modeButton, isLastClicked, [isEnabled])
+++ void SetModeCounter(modeCounter, count, isOverLimit)
+++ void SetStatusMessage(statusMessage)
+++ void SetBeginOfMeasurement(string beginOfMeasurement)
+++ void SetTimeInMeasurement (string timeInMeasurement)
+++ void SetTimeInMode (string timeInMode)
+++ void AddLogLine (string logLine)
+++ void ResetLog ()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1048</x>
+      <y>32</y>
+      <w>224</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>ModeManager ( Services )
+--
+- Hashtable modes // (modeButton, mode) 
+- Mode activeMode
+--
++ void GetMode(button)
++ Mode GetActiveMode()
++ void SetActiveMode(mode)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>992</x>
+      <y>200</y>
+      <w>336</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes>Mode ( Services )
+--
+- string logId
+- int limit
+- Button button
+- Label label
+- TextBox textBox
+- int count
+- string modeType // "AV", "VV", "Note"
+- bool reference
+- bool annotation
+- bool custom
+--
++ Mode(logId, button) //annotation
++ Mode(logId, button, label) //normal mode
++ Mode(logId, button, label, limit) //reference mode
++ Mode(logId, button, label, textBox, modeType) //custom mode
++ Mode(logId, button, textBox, modeType) //custom note
+
++ Button GetButton()
++ Label GetLabel()
++ TextBox GetTextBox()
++ int IncreaseCount()
++ void ResetCount()
++ string GetLogId()
++ void SetLogId(string logId)
++ bool IsReference()
++ bool IsAnnotation()
++ bool IsCustom()
++ bool IsOverLimit()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>992</x>
+      <y>752</y>
+      <w>320</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Programm
+--
+modeManager = new ModeManager()
+gui = new LoggerGui(modeManager)
+loggerController = new LoggerController(gui, modeManager)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>136</y>
+      <w>24</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=n
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>64</y>
+      <w>448</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>LoggerController ( Control )
+--
+- LoggerGui loggerGui
+- ModeManager modeManager
+- bool measurementRunning
+- secTicker Ticker
+--
++ GuiController(loggerGui, modeManager)
+    loggerGui.modeButtonClick += OnModeButtonClick
+    loggerGui.startStopEvent += OnStartStopEvent
+    secTicker.tick += OnTick
+	
+- void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
+- void OnStartStopEvent(object sender, StartStopEventArgs e)
+
+- void EnableUiModeButtons(bool enable)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>152</y>
+      <w>64</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>544</x>
+      <y>328</y>
+      <w>312</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Clock ( Services )
+--
+--
++ DateTime GetDateTime()
++ TimeSpan GetTimeSince(dateTime)
++ string GetTimeSinceAsString(dateTime) // "HH:mm:ss.fff"
++ string GetDateTimeString() // "dd.MM. HH:mm:ss.fff"
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>424</y>
+      <w>360</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Ticker ( Services )
+--
+- System.Timers.Timer ticker
+- bool isRunning = false;
+--
++ delegate void tickHandler(object sender, EventArgs e)
++ event tickHandler tick
+--
++ Ticker(tickInterval)
+    ticker.Elapsed += OnTick;
+- void OnTick(Object source, System.Timers.ElapsedEventArgs e)
++ void StartTicker()
++ void StopTicker()
++ void ToggleTicker()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>608</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>ModeButtonClickEventArgs : EventArgs
+--
++ Button modeButton
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>528</x>
+      <y>664</y>
+      <w>232</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>StartStopEventArgs : EventArgs
+--
++ Button button
++ bool start
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>544</y>
+      <w>64</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>576</y>
+      <w>64</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>544</x>
+      <y>304</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>304</y>
+      <w>24</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>824</y>
+      <w>232</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>--
+(-) private
+(+) public
+(++) threadsicher aufrufbare public-Methode</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>968</x>
+      <y>56</y>
+      <w>96</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;70.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>32</y>
+      <w>584</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;710.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>936</x>
+      <y>592</y>
+      <w>200</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>TxtWriter ( Services )
+--
+- string filePath
+--
++ TxtWriter()
+
++ void SetFilePath(string filePath)
++ bool CreateTxtFile()
++ void OpenTxtFile()
++ void AddLine(string txtLine)
++ bool CloseTxtFile()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>304</y>
+      <w>24</w>
+      <h>304</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>712</x>
+      <y>768</y>
+      <w>256</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>PatientDataGui ( View )
+--
+FolderBrowserDialog patientDataFolderDialog
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>904</x>
+      <y>304</y>
+      <w>24</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;580.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>936</x>
+      <y>720</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
