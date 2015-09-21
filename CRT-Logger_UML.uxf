@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>70</x>
-      <y>42</y>
+      <y>28</y>
       <w>385</w>
       <h>889</h>
     </coordinates>
@@ -96,7 +96,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>945</x>
-      <y>56</y>
+      <y>42</y>
       <w>196</w>
       <h>98</h>
     </coordinates>
@@ -115,7 +115,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>896</x>
-      <y>203</y>
+      <y>189</y>
       <w>294</w>
       <h>329</h>
     </coordinates>
@@ -156,7 +156,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>896</x>
-      <y>686</y>
+      <y>672</y>
       <w>280</w>
       <h>56</h>
     </coordinates>
@@ -172,7 +172,7 @@ loggerController = new LoggerController(gui, modeManager)
     <id>Relation</id>
     <coordinates>
       <x>1036</x>
-      <y>147</y>
+      <y>133</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -186,7 +186,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>490</x>
-      <y>84</y>
+      <y>70</y>
       <w>392</w>
       <h>217</h>
     </coordinates>
@@ -195,7 +195,8 @@ m2=n
 - LoggerGui loggerGui
 - ModeManager modeManager
 - bool measurementRunning
-- secTicker Ticker
+- Ticker secTicker
+- DateTime measurementStartTime
 --
 + GuiController(loggerGui, modeManager)
     loggerGui.modeButtonClick += OnModeButtonClick
@@ -213,7 +214,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>448</x>
-      <y>161</y>
+      <y>147</y>
       <w>56</w>
       <h>28</h>
     </coordinates>
@@ -225,7 +226,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>504</x>
-      <y>315</y>
+      <y>301</y>
       <w>273</w>
       <h>70</h>
     </coordinates>
@@ -243,7 +244,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>490</x>
-      <y>399</y>
+      <y>385</y>
       <w>315</w>
       <h>147</h>
     </coordinates>
@@ -267,7 +268,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>490</x>
-      <y>560</y>
+      <y>546</y>
       <w>203</w>
       <h>35</h>
     </coordinates>
@@ -283,7 +284,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>490</x>
-      <y>609</y>
+      <y>595</y>
       <w>203</w>
       <h>42</h>
     </coordinates>
@@ -300,7 +301,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>448</x>
-      <y>504</y>
+      <y>490</y>
       <w>56</w>
       <h>70</h>
     </coordinates>
@@ -312,7 +313,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>448</x>
-      <y>532</y>
+      <y>518</y>
       <w>56</w>
       <h>91</h>
     </coordinates>
@@ -324,7 +325,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>504</x>
-      <y>294</y>
+      <y>280</y>
       <w>21</w>
       <h>35</h>
     </coordinates>
@@ -336,7 +337,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>294</y>
+      <y>280</y>
       <w>21</w>
       <h>119</h>
     </coordinates>
@@ -348,7 +349,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>973</x>
-      <y>749</y>
+      <y>735</y>
       <w>203</w>
       <h>56</h>
     </coordinates>
@@ -362,7 +363,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>875</x>
-      <y>77</y>
+      <y>63</y>
       <w>84</w>
       <h>63</h>
     </coordinates>
@@ -374,7 +375,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>448</x>
-      <y>56</y>
+      <y>42</y>
       <w>511</w>
       <h>28</h>
     </coordinates>
@@ -386,7 +387,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>847</x>
-      <y>546</y>
+      <y>532</y>
       <w>175</w>
       <h>119</h>
     </coordinates>
@@ -409,7 +410,7 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>847</x>
-      <y>294</y>
+      <y>280</y>
       <w>21</w>
       <h>266</h>
     </coordinates>
@@ -421,7 +422,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>651</x>
-      <y>700</y>
+      <y>686</y>
       <w>224</w>
       <h>77</h>
     </coordinates>
@@ -436,7 +437,7 @@ FolderBrowserDialog patientDataFolderDialog
     <id>Relation</id>
     <coordinates>
       <x>819</x>
-      <y>294</y>
+      <y>280</y>
       <w>21</w>
       <h>420</h>
     </coordinates>
@@ -448,7 +449,7 @@ FolderBrowserDialog patientDataFolderDialog
     <id>Relation</id>
     <coordinates>
       <x>847</x>
-      <y>658</y>
+      <y>644</y>
       <w>21</w>
       <h>56</h>
     </coordinates>

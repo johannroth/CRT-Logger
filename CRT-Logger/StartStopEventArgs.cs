@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CRT_Logger
 {
-    class StartStopEventArgs : EventArgs
+    public class StartStopEventArgs : EventArgs
     {
+        public System.Windows.Forms.Button startStopButton;
+        public bool start;
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CRT_Logger
 {
-    class ModeButtonClickEventArgs : EventArgs
+    public class ModeButtonClickEventArgs : EventArgs
     {
+        public System.Windows.Forms.Button modeButton;
     }
 }
