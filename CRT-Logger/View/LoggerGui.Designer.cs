@@ -89,9 +89,8 @@
             this.recordingStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusMessageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label3 = new System.Windows.Forms.Label();
-            this.currentFileLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.patientFileButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.modeAVc2Counter = new System.Windows.Forms.Label();
@@ -100,6 +99,16 @@
             this.modeVVc2Counter = new System.Windows.Forms.Label();
             this.modeVVc2Button = new System.Windows.Forms.Button();
             this.modeVVc2TextBox = new System.Windows.Forms.TextBox();
+            this.patientNumberTextbox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.selectFolderButton = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.selectedFolderTextBox = new System.Windows.Forms.TextBox();
+            this.currentFileTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.timeInCurrentModeLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.timeInMeasurementLabel = new System.Windows.Forms.Label();
             this.modeAVLayoutPanel.SuspendLayout();
             this.modeVVLayoutPanel.SuspendLayout();
             this.modeAVcLayoutPanel.SuspendLayout();
@@ -107,6 +116,7 @@
             this.modePanel.SuspendLayout();
             this.modeNotesLayoutPanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // modeAVLayoutPanel
@@ -354,7 +364,7 @@
             // modeAV40Counter
             // 
             this.modeAV40Counter.AutoSize = true;
-            this.modeAV40Counter.BackColor = System.Drawing.Color.PaleGreen;
+            this.modeAV40Counter.BackColor = System.Drawing.SystemColors.Control;
             this.modeAV40Counter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modeAV40Counter.Location = new System.Drawing.Point(153, 0);
             this.modeAV40Counter.Name = "modeAV40Counter";
@@ -705,7 +715,7 @@
             this.modePanel.Controls.Add(this.modeAVLayoutPanel);
             this.modePanel.Controls.Add(this.modeAVcLayoutPanel);
             this.modePanel.Controls.Add(this.modeVVLayoutPanel);
-            this.modePanel.Location = new System.Drawing.Point(12, 64);
+            this.modePanel.Location = new System.Drawing.Point(12, 117);
             this.modePanel.Name = "modePanel";
             this.modePanel.Size = new System.Drawing.Size(422, 475);
             this.modePanel.TabIndex = 4;
@@ -774,12 +784,12 @@
             // 
             // logTextBox
             // 
-            this.logTextBox.Location = new System.Drawing.Point(440, 88);
+            this.logTextBox.Location = new System.Drawing.Point(440, 117);
             this.logTextBox.Multiline = true;
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
             this.logTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logTextBox.Size = new System.Drawing.Size(401, 418);
+            this.logTextBox.Size = new System.Drawing.Size(401, 475);
             this.logTextBox.TabIndex = 5;
             this.logTextBox.Text = "11:45:33.103, 00:00:21.104, AV 40, 1";
             // 
@@ -791,9 +801,9 @@
             this.currentTimeStatusLabel,
             this.recordingStatusLabel,
             this.statusMessageLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 567);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 605);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(855, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(853, 26);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "Status";
@@ -802,16 +812,19 @@
             // 
             this.currentTimeStatusLabel.AutoSize = false;
             this.currentTimeStatusLabel.Name = "currentTimeStatusLabel";
-            this.currentTimeStatusLabel.Size = new System.Drawing.Size(160, 21);
+            this.currentTimeStatusLabel.Size = new System.Drawing.Size(150, 21);
             this.currentTimeStatusLabel.Text = "20.09.2015 11:55:01";
+            this.currentTimeStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // recordingStatusLabel
             // 
             this.recordingStatusLabel.AutoSize = false;
             this.recordingStatusLabel.BackColor = System.Drawing.Color.PaleGreen;
+            this.recordingStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.recordingStatusLabel.Name = "recordingStatusLabel";
             this.recordingStatusLabel.Size = new System.Drawing.Size(120, 21);
             this.recordingStatusLabel.Text = "Not Recording";
+            this.recordingStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // statusMessageLabel
             // 
@@ -824,47 +837,38 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 68);
+            this.label3.Location = new System.Drawing.Point(440, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Current File:";
             // 
-            // currentFileLabel
-            // 
-            this.currentFileLabel.AutoSize = true;
-            this.currentFileLabel.Location = new System.Drawing.Point(531, 68);
-            this.currentFileLabel.Name = "currentFileLabel";
-            this.currentFileLabel.Size = new System.Drawing.Size(42, 17);
-            this.currentFileLabel.TabIndex = 8;
-            this.currentFileLabel.Text = "None";
-            // 
             // closeButton
             // 
             this.closeButton.AutoSize = true;
-            this.closeButton.Location = new System.Drawing.Point(766, 512);
+            this.closeButton.Location = new System.Drawing.Point(766, 12);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 27);
             this.closeButton.TabIndex = 9;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // patientFileButton
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(440, 512);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 27);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Patient File";
-            this.button1.UseVisualStyleBackColor = true;
+            this.patientFileButton.AutoSize = true;
+            this.patientFileButton.Location = new System.Drawing.Point(440, 12);
+            this.patientFileButton.Name = "patientFileButton";
+            this.patientFileButton.Size = new System.Drawing.Size(107, 27);
+            this.patientFileButton.TabIndex = 10;
+            this.patientFileButton.Text = "Patient File";
+            this.patientFileButton.UseVisualStyleBackColor = true;
             // 
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startButton.Location = new System.Drawing.Point(12, 12);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(204, 46);
+            this.startButton.Size = new System.Drawing.Size(204, 60);
             this.startButton.TabIndex = 11;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
@@ -874,7 +878,7 @@
             this.stopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopButton.Location = new System.Drawing.Point(230, 12);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(204, 46);
+            this.stopButton.Size = new System.Drawing.Size(204, 60);
             this.stopButton.TabIndex = 12;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
@@ -939,16 +943,105 @@
             this.modeVVc2TextBox.Size = new System.Drawing.Size(34, 22);
             this.modeVVc2TextBox.TabIndex = 23;
             // 
+            // patientNumberTextbox
+            // 
+            this.patientNumberTextbox.Location = new System.Drawing.Point(666, 17);
+            this.patientNumberTextbox.Name = "patientNumberTextbox";
+            this.patientNumberTextbox.Size = new System.Drawing.Size(37, 22);
+            this.patientNumberTextbox.TabIndex = 13;
+            this.patientNumberTextbox.Text = "00";
+            this.patientNumberTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(553, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Current Patient:";
+            // 
+            // selectFolderButton
+            // 
+            this.selectFolderButton.AutoSize = true;
+            this.selectFolderButton.Location = new System.Drawing.Point(440, 45);
+            this.selectFolderButton.Name = "selectFolderButton";
+            this.selectFolderButton.Size = new System.Drawing.Size(107, 27);
+            this.selectFolderButton.TabIndex = 15;
+            this.selectFolderButton.Text = "Select Folder";
+            this.selectFolderButton.UseVisualStyleBackColor = true;
+            // 
+            // selectedFolderTextBox
+            // 
+            this.selectedFolderTextBox.Location = new System.Drawing.Point(556, 47);
+            this.selectedFolderTextBox.Name = "selectedFolderTextBox";
+            this.selectedFolderTextBox.ReadOnly = true;
+            this.selectedFolderTextBox.Size = new System.Drawing.Size(285, 22);
+            this.selectedFolderTextBox.TabIndex = 16;
+            // 
+            // currentFileTextBox
+            // 
+            this.currentFileTextBox.Location = new System.Drawing.Point(556, 89);
+            this.currentFileTextBox.Name = "currentFileTextBox";
+            this.currentFileTextBox.ReadOnly = true;
+            this.currentFileTextBox.Size = new System.Drawing.Size(285, 22);
+            this.currentFileTextBox.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(218, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 17);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Time in current mode:";
+            // 
+            // timeInCurrentModeLabel
+            // 
+            this.timeInCurrentModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeInCurrentModeLabel.Location = new System.Drawing.Point(363, 1);
+            this.timeInCurrentModeLabel.Name = "timeInCurrentModeLabel";
+            this.timeInCurrentModeLabel.Size = new System.Drawing.Size(58, 31);
+            this.timeInCurrentModeLabel.TabIndex = 19;
+            this.timeInCurrentModeLabel.Text = "100";
+            this.timeInCurrentModeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.timeInMeasurementLabel);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.timeInCurrentModeLabel);
+            this.panel1.Location = new System.Drawing.Point(12, 78);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(422, 33);
+            this.panel1.TabIndex = 20;
+            // 
+            // timeInMeasurementLabel
+            // 
+            this.timeInMeasurementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeInMeasurementLabel.Location = new System.Drawing.Point(3, 1);
+            this.timeInMeasurementLabel.Name = "timeInMeasurementLabel";
+            this.timeInMeasurementLabel.Size = new System.Drawing.Size(197, 31);
+            this.timeInMeasurementLabel.TabIndex = 20;
+            this.timeInMeasurementLabel.Text = "00:00:00";
+            this.timeInMeasurementLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // LoggerGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 593);
+            this.ClientSize = new System.Drawing.Size(853, 631);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.currentFileTextBox);
+            this.Controls.Add(this.selectedFolderTextBox);
+            this.Controls.Add(this.selectFolderButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.patientNumberTextbox);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.patientFileButton);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.currentFileLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.logTextBox);
@@ -972,6 +1065,8 @@
             this.modeNotesLayoutPanel.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1040,9 +1135,8 @@
         private System.Windows.Forms.ToolStripStatusLabel recordingStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel statusMessageLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label currentFileLabel;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button patientFileButton;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Label modeAVc2Counter;
@@ -1051,6 +1145,16 @@
         private System.Windows.Forms.Label modeVVc2Counter;
         private System.Windows.Forms.Button modeVVc2Button;
         private System.Windows.Forms.TextBox modeVVc2TextBox;
+        private System.Windows.Forms.TextBox patientNumberTextbox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button selectFolderButton;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.TextBox selectedFolderTextBox;
+        private System.Windows.Forms.TextBox currentFileTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label timeInCurrentModeLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label timeInMeasurementLabel;
 
 
     }

@@ -7,7 +7,7 @@
       <x>70</x>
       <y>42</y>
       <w>385</w>
-      <h>854</h>
+      <h>889</h>
     </coordinates>
     <panel_attributes>LoggerGui ( View )
 --
@@ -50,15 +50,18 @@
 - Button startButton
 - Button stopButton
 
+- Button selectFolderButton
+- Button patientFileButton
+
 - Button closeButton
 
-- Label beginOfMeasurementLabel
-- Label timeInMeasurementLabel
 - Label timeInModeLabel
-
-- Label currentFileLabel
+- Label timeInMeasurementLabel
 
 - TextBox logTextBox
+- TextBox patientNumberTextBox
+- TextBox selectedFolderTextBox
+- TextBox currentFileTextBox
 
 - toolStripStatusLabel currentTimeStatusLabel
 - toolStripStatusLabel recordingStatusLabel
