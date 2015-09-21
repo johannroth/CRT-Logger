@@ -16,5 +16,6 @@ namespace CRT_Logger
         {
             InitializeComponent();
         }
+
     }
 }
