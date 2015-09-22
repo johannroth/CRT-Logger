@@ -832,6 +832,7 @@
             this.modeCustomNoteTextBox.Name = "modeCustomNoteTextBox";
             this.modeCustomNoteTextBox.Size = new System.Drawing.Size(201, 22);
             this.modeCustomNoteTextBox.TabIndex = 22;
+            this.modeCustomNoteTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modeCustomNoteTextBox_KeyDown);
             // 
             // modeCustomNoteButton
             // 

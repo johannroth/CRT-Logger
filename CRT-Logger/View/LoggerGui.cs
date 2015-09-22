@@ -376,9 +376,20 @@ namespace CRT_Logger
             modeButtonClick(sender, args);
         }
 
+        private void modeCustomNoteTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (isRecording)
+                {
+                    ModeButtonClickEventArgs args = new ModeButtonClickEventArgs();
+                    args.modeButton = modeCustomNoteButton;
+                    modeButtonClick(sender, args);
+                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
 
-
-
-
+            }
+        }
     }
 }
