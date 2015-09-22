@@ -97,6 +97,7 @@ namespace CRT_Logger.Control
                     loggerGui.EnableStartStopButtons(!start);
                     loggerGui.ResetModeCounters();
                     loggerGui.SetTimeInMeasurement("00:00:00");
+                    loggerGui.SetRecordingStatus(start);
                     measurementRunning = false;
                 }
             }
@@ -109,6 +110,7 @@ namespace CRT_Logger.Control
                 modeManager.SetNoModeActive();
                 loggerGui.EnableModeButtons(start);
                 loggerGui.EnableStartStopButtons(!start);
+                loggerGui.SetRecordingStatus(start);
             }
 
         }

@@ -28,6 +28,7 @@ namespace CRT_Logger
             InitializeComponent();
         }
 
+        // Delegates to ensure thread safety.
         public delegate void AddLogLineSafely(string logLine);
         public delegate void SetButtonStatusSafely(Button modeButton, bool isLastClicked);
         public delegate void EnableStartStopButtonsSafely(bool enable);
@@ -39,6 +40,7 @@ namespace CRT_Logger
         public delegate void IncreaseTimeInModeSafely();
         public delegate void ResetTimeInModeSafely();
         public delegate void SetTimeInMeasurementSafely(string time);
+        public delegate void SetRecordingStatusSafely(bool isRecording);
 
         /// <summary>
         /// Adds the specified string with a following NewLine-command to the logTextBox. 
@@ -240,14 +242,40 @@ namespace CRT_Logger
         /// <param name="time">Time in measurement as string.</param>
         public void SetTimeInMeasurement(string time)
         {
-            if (timeInMeasurementLabel.InvokeRequired)
+            if (this.InvokeRequired)
             {
                 SetTimeInMeasurementSafely d = new SetTimeInMeasurementSafely(SetTimeInMeasurement);
                 Invoke(d, new object[] { time });
             }
             else
             {
-                timeInMeasurementLabel.Text = time;
+                recordingStatusLabel.Text = "Recording (" + time + ")";
+            }
+        }
+        /// <summary>
+        /// Sets recording status.
+        /// </summary>
+        /// <param name="isRecording">Recording status.</param>
+        public void SetRecordingStatus(bool isRecording)
+        {
+            if (this.InvokeRequired)
+            {
+                SetRecordingStatusSafely d = new SetRecordingStatusSafely(SetRecordingStatus);
+                Invoke(d, new object[] { isRecording });
+            }
+            else
+            {
+                if (isRecording)
+                {
+                    recordingStatusLabel.Text = "Recording";
+                    recordingStatusLabel.BackColor = Color.LightSalmon;
+                }
+                else
+                {
+                    recordingStatusLabel.Text = "Not Recording";
+                    recordingStatusLabel.BackColor = Color.PaleGreen;
+                }
+                
             }
         }
 

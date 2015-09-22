@@ -108,7 +108,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.timeInCurrentModeLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timeInMeasurementLabel = new System.Windows.Forms.Label();
             this.beepCheckBox = new System.Windows.Forms.CheckBox();
             this.modeAVLayoutPanel.SuspendLayout();
             this.modeVVLayoutPanel.SuspendLayout();
@@ -913,7 +912,7 @@
             this.recordingStatusLabel.BackColor = System.Drawing.Color.PaleGreen;
             this.recordingStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.recordingStatusLabel.Name = "recordingStatusLabel";
-            this.recordingStatusLabel.Size = new System.Drawing.Size(120, 21);
+            this.recordingStatusLabel.Size = new System.Drawing.Size(180, 21);
             this.recordingStatusLabel.Text = "Not Recording";
             this.recordingStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1044,23 +1043,12 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.beepCheckBox);
-            this.panel1.Controls.Add(this.timeInMeasurementLabel);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.timeInCurrentModeLabel);
             this.panel1.Location = new System.Drawing.Point(12, 78);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(422, 33);
             this.panel1.TabIndex = 20;
-            // 
-            // timeInMeasurementLabel
-            // 
-            this.timeInMeasurementLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeInMeasurementLabel.Location = new System.Drawing.Point(3, 9);
-            this.timeInMeasurementLabel.Name = "timeInMeasurementLabel";
-            this.timeInMeasurementLabel.Size = new System.Drawing.Size(78, 18);
-            this.timeInMeasurementLabel.TabIndex = 20;
-            this.timeInMeasurementLabel.Text = "00:00:00";
-            this.timeInMeasurementLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // beepCheckBox
             // 
@@ -1201,7 +1189,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label timeInCurrentModeLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label timeInMeasurementLabel;
         private System.Windows.Forms.CheckBox beepCheckBox;
 
 
