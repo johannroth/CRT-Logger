@@ -69,7 +69,7 @@
 - toolStripStatusLabel statusMessageLabel
 
 - int timeInMode;
-
+- bool isRecording;
 --
 + delegate void modeButtonClickHandler(Object sender, ModeButtonClickEventArgs e)
 + event modeButtonClickHandler modeButtonClick

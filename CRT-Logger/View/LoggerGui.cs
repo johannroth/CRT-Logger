@@ -14,6 +14,7 @@ namespace CRT_Logger
     public partial class LoggerGui : Form
     {
         private int timeInMode = 0;
+        private bool isRecording = false;
 
         public delegate void ModeButtonClickHandler(object sender, ModeButtonClickEventArgs e);
         public event ModeButtonClickHandler modeButtonClick;
@@ -267,11 +268,13 @@ namespace CRT_Logger
             {
                 if (isRecording)
                 {
+                    this.isRecording = isRecording;
                     recordingStatusLabel.Text = "Recording";
                     recordingStatusLabel.BackColor = Color.LightSalmon;
                 }
                 else
                 {
+                    this.isRecording = isRecording;
                     recordingStatusLabel.Text = "Not Recording";
                     recordingStatusLabel.BackColor = Color.PaleGreen;
                 }
@@ -320,7 +323,13 @@ namespace CRT_Logger
         // Eventhandlers
         private void LoggerGui_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Do you really want to exit? All unsaved data will be lost.",
+            if (isRecording)
+            {
+                MessageBox.Show("Measurement is running, stop measurement before closing.",
+                    "Measurement running", MessageBoxButtons.OK);
+                e.Cancel = true;
+            }
+            else if (MessageBox.Show("Do you really want to exit? All unsaved data will be lost.",
                 "Exit CRT-Logger",MessageBoxButtons.OKCancel) == DialogResult.Cancel)
             {
                 e.Cancel = true;
