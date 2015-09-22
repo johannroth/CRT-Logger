@@ -56,5 +56,13 @@ namespace CRT_Logger.Services
         {
             return modes;
         }
+        /// <summary>
+        /// Adds new Mode to the Hashtable
+        /// </summary>
+        /// <param name="mode">Mode to be added to the Hashtable</param>
+        public void AddMode(Mode mode)
+        {
+            modes.Add(mode.GetButton(), mode);
+        }
     }
 }

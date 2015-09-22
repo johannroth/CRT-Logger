@@ -78,7 +78,31 @@ namespace CRT_Logger
         public void InitializeModes(Services.ModeManager modeManager)
         {
             this.modeManager = modeManager;
-            // TODO: add modes
+            modeManager.AddMode(new Services.Mode("AV 40", modeAV40Button, modeAV40Counter));
+            modeManager.AddMode(new Services.Mode("AV 80", modeAV80Button, modeAV80Counter));
+            modeManager.AddMode(new Services.Mode("AV 100", modeAV100Button, modeAV100Counter));
+            modeManager.AddMode(new Services.Mode("AV 120", modeAV120Button, modeAV120Counter, 99));
+            modeManager.AddMode(new Services.Mode("AV 140", modeAV140Button, modeAV140Counter));
+            modeManager.AddMode(new Services.Mode("AV 160", modeAV160Button, modeAV160Counter));
+            modeManager.AddMode(new Services.Mode("AV 200", modeAV200Button, modeAV200Counter));
+            modeManager.AddMode(new Services.Mode("AV 240", modeAV240Button, modeAV240Counter));
+            modeManager.AddMode(new Services.Mode("AV 280", modeAV280Button, modeAV280Counter));
+            modeManager.AddMode(new Services.Mode("AV 320", modeAV320Button, modeAV320Counter));
+            modeManager.AddMode(new Services.Mode("VV -80", modeVVn80Button, modeVVn80Counter));
+            modeManager.AddMode(new Services.Mode("VV -60", modeVVn60Button, modeVVn60Counter));
+            modeManager.AddMode(new Services.Mode("VV -40", modeVVn40Button, modeVVn40Counter));
+            modeManager.AddMode(new Services.Mode("VV -20", modeVVn20Button, modeVVn20Counter));
+            modeManager.AddMode(new Services.Mode("VV 0", modeVV0Button, modeVV0Counter, 99));
+            modeManager.AddMode(new Services.Mode("VV 20", modeVV20Button, modeVV20Counter));
+            modeManager.AddMode(new Services.Mode("VV 40", modeVV40Button, modeVV40Counter));
+            modeManager.AddMode(new Services.Mode("VV 60", modeVV60Button, modeVV60Counter));
+            modeManager.AddMode(new Services.Mode("VV 80", modeVV80Button, modeVV80Counter));
+            modeManager.AddMode(new Services.Mode("AVc 00", modeAVc1Button, modeAVc1Counter, modeAVc1TextBox, "AV"));
+            modeManager.AddMode(new Services.Mode("AVc 00", modeAVc2Button, modeAVc2Counter, modeAVc2TextBox, "AV"));
+            modeManager.AddMode(new Services.Mode("VVc 00", modeVVc1Button, modeVVc1Counter, modeVVc1TextBox, "VV"));
+            modeManager.AddMode(new Services.Mode("VVc 00", modeVVc2Button, modeVVc2Counter, modeVVc2TextBox, "VV"));
+            modeManager.AddMode(new Services.Mode("Idle", modeIdleButton));
+            modeManager.AddMode(new Services.Mode("Note", modeCustomNoteButton, modeCustomNoteTextBox));
         }
 
         private void LoggerGui_FormClosing(object sender, FormClosingEventArgs e)

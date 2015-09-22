@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace CRT_Logger.Control
         {
             Button button = e.startStopButton;
             bool start = e.start;
-            Console.Beep();
+            EnableUiModeButtons(start);
 
             // Code for start routine
 
@@ -50,9 +51,21 @@ namespace CRT_Logger.Control
 
         }
 
+        /// <summary>
+        /// Enables or disables all ModeButton.
+        /// Enabling or disabling all Buttons with reset lastClicked Status.
+        /// </summary>
+        /// <param name="enable">Bool to specify if buttons will be enabled or disabled.</param>
+        /// <returns></returns>
         private void EnableUiModeButtons(bool enable)
         {
-
+            Hashtable modes = modeManager.GetModeHashtable();
+            foreach (DictionaryEntry mode in modes)
+            {
+                Button modeButton = mode.Key as Button;
+                loggerGui.SetButtonStatus(modeButton, false, enable);
+            }
+            modeManager.SetActiveMode(null);
         }
     }
 }

@@ -74,10 +74,10 @@
 + delegate void startStopEventHandler(Object sender, StartStopEventArgs e)
 + event startStopEventHandler startStopEvent
 --
-+ Gui(modeManager)
++ LoggerGui()
 
 // Erstellt bestehende Modes und meldet diese beim Manager an
-+ initializeModes()
++ InitializeModes(modeManager)
 
 + string GetCustomText(textBox)
 
@@ -109,6 +109,7 @@
 + Mode GetActiveMode()
 + void SetActiveMode(mode)
 + Hashtable GetModeHashtable()
++ void AddMode(mode)
 </panel_attributes>
     <additional_attributes/>
   </element>
