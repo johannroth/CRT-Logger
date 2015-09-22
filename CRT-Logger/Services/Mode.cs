@@ -96,7 +96,8 @@ namespace CRT_Logger.Services
         /// <param name="textBox">TextBox, that contains the specification of the mode.</param>
         /// <param name="modeType">String that specifies modeType, AV or VV.</param>
         /// <returns></returns>
-        public Mode(string logId, Button button, Label counter, TextBox textBox, string modeType)
+        public Mode(string logId, Button button, Label counter, TextBox textBox,
+            string modeType)
         {
             this.logId = logId;
             this.button = button;

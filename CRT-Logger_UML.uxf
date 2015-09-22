@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>18</x>
+      <x>0</x>
       <y>135</y>
       <w>495</w>
       <h>1143</h>
@@ -97,10 +97,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1143</x>
-      <y>108</y>
+      <x>1125</x>
+      <y>72</y>
       <w>252</w>
-      <h>162</h>
+      <h>207</h>
     </coordinates>
     <panel_attributes>ModeManager ( Services )
 --
@@ -113,6 +113,7 @@
 + Mode GetMode(button)
 + Mode GetActiveMode()
 + void SetActiveMode(mode)
++ void SetActiveMode(modeButton)
 + Hashtable GetModeHashtable()
 + void AddMode(mode)
 </panel_attributes>
@@ -121,7 +122,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
+      <x>1062</x>
       <y>342</y>
       <w>378</w>
       <h>423</h>
@@ -162,7 +163,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
+      <x>1062</x>
       <y>963</y>
       <w>360</w>
       <h>72</h>
@@ -178,21 +179,21 @@ loggerController = new LoggerController(gui, modeManager)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1260</x>
-      <y>261</y>
+      <x>1242</x>
+      <y>270</y>
       <w>27</w>
-      <h>99</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=n
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>540</x>
       <y>189</y>
       <w>504</w>
       <h>279</h>
@@ -212,13 +213,15 @@ m2=n
 	
 - void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
 - void OnStartStopEvent(object sender, StartStopEventArgs e)
+- void OnTick(object sender, EventArgs e)
+- void OnNewActiveModeEvent(object sender, NewActiveModeEventArgs e)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>486</x>
       <y>288</y>
       <w>72</w>
       <h>36</h>
@@ -230,7 +233,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
+      <x>558</x>
       <y>486</y>
       <w>351</w>
       <h>90</h>
@@ -248,7 +251,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>540</x>
       <y>594</y>
       <w>405</w>
       <h>189</h>
@@ -272,7 +275,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>540</x>
       <y>801</y>
       <w>261</w>
       <h>45</h>
@@ -288,7 +291,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>540</x>
       <y>864</y>
       <w>261</w>
       <h>54</h>
@@ -305,7 +308,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>486</x>
       <y>729</y>
       <w>72</w>
       <h>90</h>
@@ -317,7 +320,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>486</x>
       <y>765</y>
       <w>72</w>
       <h>117</h>
@@ -329,7 +332,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>576</x>
+      <x>558</x>
       <y>459</y>
       <w>27</w>
       <h>45</h>
@@ -341,7 +344,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>558</x>
+      <x>540</x>
       <y>459</y>
       <w>27</w>
       <h>153</h>
@@ -353,7 +356,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1179</x>
+      <x>1161</x>
       <y>1044</y>
       <w>261</w>
       <h>72</h>
@@ -367,7 +370,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1053</x>
+      <x>1035</x>
       <y>135</y>
       <w>108</w>
       <h>126</h>
@@ -379,7 +382,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>504</x>
+      <x>486</x>
       <y>117</y>
       <w>657</w>
       <h>72</h>
@@ -391,7 +394,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
+      <x>999</x>
       <y>783</y>
       <w>225</w>
       <h>153</h>
@@ -414,7 +417,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1017</x>
+      <x>999</x>
       <y>459</y>
       <w>27</w>
       <h>342</h>
@@ -426,7 +429,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>765</x>
+      <x>747</x>
       <y>981</y>
       <w>288</w>
       <h>99</h>
@@ -441,7 +444,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>981</x>
+      <x>963</x>
       <y>459</y>
       <w>27</w>
       <h>540</h>
@@ -453,7 +456,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1017</x>
+      <x>999</x>
       <y>927</y>
       <w>27</w>
       <h>72</h>
@@ -465,7 +468,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
+      <x>945</x>
       <y>0</y>
       <w>261</w>
       <h>54</h>
@@ -482,13 +485,13 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1170</x>
+      <x>1152</x>
       <y>45</y>
       <w>27</w>
-      <h>81</h>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

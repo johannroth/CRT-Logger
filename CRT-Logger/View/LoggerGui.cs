@@ -27,8 +27,7 @@ namespace CRT_Logger
         }
 
         public delegate void AddLogLineSafely(string logLine);
-        public delegate void SetButtonStatusSafely(Button modeButton,
-            bool isLastClicked, bool isEnabled = true);
+        public delegate void SetButtonStatusSafely(Button modeButton, bool isLastClicked);
         public delegate void EnableStartStopButtonsSafely(bool enable);
         public delegate void EnableModeButtonsSafely(bool enable);
         public delegate void SetModeCounterSafely(Label modeCounter,
@@ -62,13 +61,21 @@ namespace CRT_Logger
         /// <param name="isLastClicked">Specifies, if button will be highlighted as lastClicked.</param>
         public void SetButtonStatus(Button modeButton, bool isLastClicked)
         {
-            if (isLastClicked)
+            if (modeButton.InvokeRequired)
             {
-                modeButton.BackColor = Color.PaleGreen;
+                SetButtonStatusSafely d = new SetButtonStatusSafely(SetButtonStatus);
+                Invoke(d, new object[] { modeButton, isLastClicked });
             }
             else
             {
-                modeButton.BackColor = SystemColors.Control;
+                if (isLastClicked)
+                {
+                    modeButton.BackColor = Color.PaleGreen;
+                }
+                else
+                {
+                    modeButton.BackColor = SystemColors.Control;
+                }
             }
         }
         /// <summary>
@@ -76,7 +83,7 @@ namespace CRT_Logger
         /// </summary>
         public void EnableModeButtons(bool enable)
         {
-            if (logTextBox.InvokeRequired)
+            if (this.InvokeRequired)
             {
                 EnableModeButtonsSafely d = new EnableModeButtonsSafely( EnableModeButtons );
                 Invoke(d, new object[] { enable });
@@ -95,7 +102,7 @@ namespace CRT_Logger
         /// </summary>
         public void EnableStartStopButtons(bool enableStart)
         {
-            if (logTextBox.InvokeRequired)
+            if (this.InvokeRequired)
             {
                 EnableStartStopButtonsSafely d = new EnableStartStopButtonsSafely(EnableStartStopButtons);
                 Invoke(d, new object[] { enableStart });
@@ -114,7 +121,7 @@ namespace CRT_Logger
         /// <param name="isOverLimit">Bool to specify, if limit is reached.</param>
         public void SetModeCounter(Label modeCounter, int count, bool isOverLimit)
         {
-            if (logTextBox.InvokeRequired)
+            if (modeCounter.InvokeRequired)
             {
                 SetModeCounterSafely d = new SetModeCounterSafely(SetModeCounter);
                 Invoke(d, new object[] { modeCounter, count, isOverLimit });
@@ -135,7 +142,6 @@ namespace CRT_Logger
         /// <summary>
         /// Resets mode Counters to zero
         /// </summary>
-
         public void ResetModeCounters()
         {
             if (logTextBox.InvokeRequired)
@@ -158,7 +164,6 @@ namespace CRT_Logger
                 }
             }
         }
-        
 
         public void InitializeModes(Services.ModeManager modeManager)
         {
@@ -189,7 +194,16 @@ namespace CRT_Logger
             modeManager.AddMode(new Services.Mode("Idle", modeIdleButton));
             modeManager.AddMode(new Services.Mode("Note", modeCustomNoteButton, modeCustomNoteTextBox));
         }
+        /// <summary>
+        /// Returns text of custom note textbox.
+        /// </summary>
+        /// <param name="textBox">Textbox whose Text will be returned.</param>
+        public string GetCustomNoteText(TextBox textBox)
+        {
+            return textBox.Text;
+        }
 
+        // Eventhandlers
         private void LoggerGui_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Do you really want to exit? All unsaved data will be lost.",
@@ -202,7 +216,6 @@ namespace CRT_Logger
         {
             this.Close();
         }
-
         private void startButton_Click(object sender, EventArgs e)
         {
             StartStopEventArgs args = new StartStopEventArgs();
@@ -217,7 +230,6 @@ namespace CRT_Logger
             args.startStopButton = sender as Button;
             startStopEvent(sender, args);
         }
-
         private void AnyModeButton_Click(object sender, EventArgs e)
         {
             ModeButtonClickEventArgs args = new ModeButtonClickEventArgs();
