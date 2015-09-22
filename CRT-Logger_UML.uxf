@@ -4,10 +4,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>162</x>
       <y>135</y>
       <w>495</w>
-      <h>1143</h>
+      <h>1269</h>
     </coordinates>
     <panel_attributes>LoggerGui ( View )
 --
@@ -19,6 +19,8 @@
 - LayoutPanel modeVVcLayoutPanel
 - LayoutPanel modeNoteLayoutPanel
 - Panel modePanel
+
+- CheckBox beepCheckBox
 
 - Button modeAV40Button, Label modeAV40Counter
 - Button modeAV80Button, Label modeAV80Counter
@@ -67,6 +69,8 @@
 - toolStripStatusLabel recordingStatusLabel
 - toolStripStatusLabel statusMessageLabel
 
+- int timeInMode;
+
 --
 + delegate void modeButtonClickHandler(Object sender, ModeButtonClickEventArgs e)
 + event modeButtonClickHandler modeButtonClick
@@ -86,9 +90,10 @@
 ++ void SetButtonStatus(modeButton, isLastClicked, [isEnabled])
 ++ void SetModeCounter(modeCounter, count, isOverLimit)
 ++ void SetStatusMessage(statusMessage)
-++ void SetBeginOfMeasurement(string beginOfMeasurement)
+++ void SetCurrentTime(DateTime time)
 ++ void SetTimeInMeasurement (string timeInMeasurement)
-++ void SetTimeInMode (string timeInMode)
+++ void IncreaseTimeInMode ()
+++ void ResetTimeInMode ()
 ++ void AddLogLine (string logLine)
 ++ void ResetLog ()
 </panel_attributes>
@@ -97,7 +102,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1125</x>
+      <x>1287</x>
       <y>72</y>
       <w>252</w>
       <h>207</h>
@@ -122,7 +127,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1062</x>
+      <x>1224</x>
       <y>342</y>
       <w>378</w>
       <h>423</h>
@@ -163,7 +168,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1062</x>
+      <x>1224</x>
       <y>963</y>
       <w>360</w>
       <h>72</h>
@@ -179,7 +184,7 @@ loggerController = new LoggerController(gui, modeManager)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1242</x>
+      <x>1404</x>
       <y>270</y>
       <w>27</w>
       <h>90</h>
@@ -193,7 +198,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
+      <x>702</x>
       <y>189</y>
       <w>504</w>
       <h>279</h>
@@ -204,6 +209,7 @@ m2=n
 - ModeManager modeManager
 - bool measurementRunning
 - Ticker secTicker
+- Ticker modeSecTicker
 - DateTime measurementStartTime
 --
 + GuiController(loggerGui, modeManager)
@@ -221,7 +227,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>486</x>
+      <x>648</x>
       <y>288</y>
       <w>72</w>
       <h>36</h>
@@ -233,7 +239,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>720</x>
       <y>486</y>
       <w>351</w>
       <h>90</h>
@@ -251,10 +257,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
+      <x>702</x>
       <y>594</y>
       <w>405</w>
-      <h>189</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>Ticker ( Services )
 --
@@ -269,14 +275,15 @@ m2=n
 - void OnTick(Object source, System.Timers.ElapsedEventArgs e)
 + void StartTicker()
 + void StopTicker()
++ void ResetTicker()
 + void ToggleTicker()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>801</y>
+      <x>765</x>
+      <y>1098</y>
       <w>261</w>
       <h>45</h>
     </coordinates>
@@ -291,8 +298,8 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>864</y>
+      <x>765</x>
+      <y>1152</y>
       <w>261</w>
       <h>54</h>
     </coordinates>
@@ -308,31 +315,19 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>486</x>
-      <y>729</y>
-      <w>72</w>
+      <x>648</x>
+      <y>1080</y>
+      <w>135</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>486</x>
-      <y>765</y>
-      <w>72</w>
-      <h>117</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>558</x>
+      <x>720</x>
       <y>459</y>
       <w>27</w>
       <h>45</h>
@@ -344,7 +339,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
+      <x>702</x>
       <y>459</y>
       <w>27</w>
       <h>153</h>
@@ -356,7 +351,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1161</x>
+      <x>1323</x>
       <y>1044</y>
       <w>261</w>
       <h>72</h>
@@ -370,7 +365,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1035</x>
+      <x>1197</x>
       <y>135</y>
       <w>108</w>
       <h>126</h>
@@ -382,7 +377,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>486</x>
+      <x>648</x>
       <y>117</y>
       <w>657</w>
       <h>72</h>
@@ -394,7 +389,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>999</x>
+      <x>1161</x>
       <y>783</y>
       <w>225</w>
       <h>153</h>
@@ -417,7 +412,7 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>999</x>
+      <x>1161</x>
       <y>459</y>
       <w>27</w>
       <h>342</h>
@@ -429,7 +424,7 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>747</x>
+      <x>909</x>
       <y>981</y>
       <w>288</w>
       <h>99</h>
@@ -444,7 +439,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
+      <x>1125</x>
       <y>459</y>
       <w>27</w>
       <h>540</h>
@@ -456,7 +451,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>999</x>
+      <x>1161</x>
       <y>927</y>
       <w>27</w>
       <h>72</h>
@@ -468,7 +463,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
+      <x>1107</x>
       <y>0</y>
       <w>261</w>
       <h>54</h>
@@ -485,7 +480,7 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1152</x>
+      <x>1314</x>
       <y>45</y>
       <w>27</w>
       <h>45</h>
@@ -493,5 +488,17 @@ FolderBrowserDialog patientDataFolderDialog
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>1035</y>
+      <w>135</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;70.0</additional_attributes>
   </element>
 </diagram>

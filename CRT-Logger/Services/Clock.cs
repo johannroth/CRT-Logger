@@ -8,10 +8,17 @@ namespace CRT_Logger.Services
 {
     public class Clock
     {
+        /// <summary>
+        /// Returns current Time as DateTime object
+        /// </summary>
         public DateTime GetDateTime()
         {
             return DateTime.Now;
         }
+        /// <summary>
+        /// Returns time since timeInPast as TimeSpan object.
+        /// </summary>
+        /// <param name="timeInPast">DateTime in the past.</param>
         public TimeSpan GetTimeSince(DateTime timeInPast)
         {
             return DateTime.Now.Subtract(timeInPast);

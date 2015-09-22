@@ -14,18 +14,26 @@ namespace CRT_Logger.Control
         private Services.ModeManager modeManager;
         private bool measurementRunning;
         private Services.Ticker secTicker;
+        private Services.Ticker modeSecTicker;
+        private Services.Ticker measurementSecTicker;
+        private Services.Clock clock;
         private DateTime measurementStartTime;
 
         public LoggerController(LoggerGui loggerGui)
         {
             this.loggerGui = loggerGui;
             secTicker = new Services.Ticker(1000);
+            modeSecTicker = new Services.Ticker(1000);
+            measurementSecTicker = new Services.Ticker(1000);
+            clock = new Services.Clock();
 
             // Listen to ButtonClick Events in GUI.
             loggerGui.modeButtonClick += OnModeButtonClick;
             loggerGui.startStopEvent += OnStartStopEvent;
             // Listen to Tick Events of Ticker.
             secTicker.tick += OnTick;
+            modeSecTicker.tick += OnTick;
+            measurementSecTicker.tick += OnTick;
 
             // Create new mode manager and listen to its Events.
             modeManager = new Services.ModeManager();
@@ -37,6 +45,10 @@ namespace CRT_Logger.Control
             loggerGui.EnableModeButtons(false);
             loggerGui.EnableStartStopButtons(true);
             loggerGui.ResetModeCounters();
+            loggerGui.ResetTimeInMode();
+
+            // Start the ticker to get current time
+            secTicker.StartTicker();
         }
 
         private void OnNewActiveModeEvent(object sender, NewActiveModeEventArgs e)
@@ -52,6 +64,19 @@ namespace CRT_Logger.Control
         }
         private void OnTick(object source, EventArgs e)
         {
+            if (secTicker == source as Services.Ticker)
+            {
+                loggerGui.SetCurrentTime(clock.GetDateTime());
+            }
+            else if (modeSecTicker == source as Services.Ticker)
+            {
+                loggerGui.IncreaseTimeInMode();
+            }
+            else if (measurementSecTicker == source as Services.Ticker)
+            {
+                string time = clock.GetTimeSinceStringShort(measurementStartTime);
+                loggerGui.SetTimeInMeasurement(time);
+            }
             
         }
         private void OnStartStopEvent(object sender, StartStopEventArgs e)
@@ -64,15 +89,23 @@ namespace CRT_Logger.Control
                 "End Measurement", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     // Code for stop routine.
+                    modeSecTicker.StopTicker();
+                    measurementSecTicker.StopTicker();
+                    loggerGui.ResetTimeInMode();
                     modeManager.SetNoModeActive();
                     loggerGui.EnableModeButtons(start);
                     loggerGui.EnableStartStopButtons(!start);
                     loggerGui.ResetModeCounters();
+                    loggerGui.SetTimeInMeasurement("00:00:00");
+                    measurementRunning = false;
                 }
             }
             else
             {
                 // Code for start routine.
+                measurementStartTime = clock.GetDateTime();
+                measurementSecTicker.StartTicker();
+                measurementRunning = true;
                 modeManager.SetNoModeActive();
                 loggerGui.EnableModeButtons(start);
                 loggerGui.EnableStartStopButtons(!start);
@@ -93,6 +126,8 @@ namespace CRT_Logger.Control
                 {
                     loggerGui.SetModeCounter(counter, count, mode.IsOverLimit());
                 }
+                modeSecTicker.ResetTicker();
+                loggerGui.ResetTimeInMode();
             }
         }
     }

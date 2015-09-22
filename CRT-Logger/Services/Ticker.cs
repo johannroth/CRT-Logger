@@ -21,14 +21,29 @@ namespace CRT_Logger.Services
             ticker.Elapsed += OnTick;
         }
         public void StartTicker()
-        {       
-            ticker.Start();
+        {
+            if (!isRunning)
+            {
+                ticker.Start();
+            }
             isRunning = true;
         }
         public void StopTicker()
         {
-            ticker.Stop();
+            if (isRunning)
+            {
+                ticker.Stop();
+            }
             isRunning = false;
+        }
+        public void ResetTicker()
+        {
+            if (isRunning)
+            {
+                ticker.Stop();
+            }
+            ticker.Start();
+            isRunning = true;
         }
         public void ToggleTicker()
         {

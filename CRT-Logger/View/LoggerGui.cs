@@ -13,6 +13,8 @@ namespace CRT_Logger
 {
     public partial class LoggerGui : Form
     {
+        private int timeInMode = 0;
+
         public delegate void ModeButtonClickHandler(object sender, ModeButtonClickEventArgs e);
         public event ModeButtonClickHandler modeButtonClick;
 
@@ -33,6 +35,10 @@ namespace CRT_Logger
         public delegate void SetModeCounterSafely(Label modeCounter,
             int count, bool isOverLimit);
         public delegate void ResetModeCountersSafely();
+        public delegate void SetCurrentTimeSafely(DateTime time);
+        public delegate void IncreaseTimeInModeSafely();
+        public delegate void ResetTimeInModeSafely();
+        public delegate void SetTimeInMeasurementSafely(string time);
 
         /// <summary>
         /// Adds the specified string with a following NewLine-command to the logTextBox. 
@@ -162,6 +168,86 @@ namespace CRT_Logger
                     }
                     mode.ResetCount();
                 }
+            }
+        }
+        /// <summary>
+        /// Sets current time
+        /// </summary>
+        /// <param name="time">DateTime object.</param>
+        public void SetCurrentTime(DateTime time)
+        {
+            if (this.InvokeRequired)
+            {
+                SetCurrentTimeSafely d = new SetCurrentTimeSafely(SetCurrentTime);
+                Invoke(d, new object[] { time });
+            }
+            else
+            {
+                currentTimeStatusLabel.Text = time.ToString("dd.MM.yyyy HH:mm:ss");
+            }
+        }
+        /// <summary>
+        /// Increase Time in current mode.
+        /// </summary>
+        /// <param name="time">Time in </param>
+        public void IncreaseTimeInMode()
+        {
+            if (this.InvokeRequired)
+            {
+                IncreaseTimeInModeSafely d = new IncreaseTimeInModeSafely(IncreaseTimeInMode);
+                Invoke(d, new object[] {  });
+            }
+            else
+            {
+                timeInMode++;
+                timeInCurrentModeLabel.Text = timeInMode.ToString();
+                if (timeInMode < 10)
+                {
+                    timeInCurrentModeLabel.BackColor = SystemColors.Control;
+                }
+                else
+                {
+                    timeInCurrentModeLabel.BackColor = Color.PaleGreen;
+                    if ((timeInMode == 10) && beepCheckBox.Checked)
+                    {
+                        Console.Beep();
+                    }
+                }
+
+            }
+        }
+        /// <summary>
+        /// Reset time in mode to 0.
+        /// </summary>
+        /// <param name="time">Time in </param>
+        public void ResetTimeInMode()
+        {
+            if (this.InvokeRequired)
+            {
+                ResetTimeInModeSafely d = new ResetTimeInModeSafely(ResetTimeInMode);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                timeInMode = 0;
+                timeInCurrentModeLabel.Text = "0";
+                timeInCurrentModeLabel.BackColor = SystemColors.Control;
+            }
+        }
+        /// <summary>
+        /// Sets time in measurement.
+        /// </summary>
+        /// <param name="time">Time in measurement as string.</param>
+        public void SetTimeInMeasurement(string time)
+        {
+            if (timeInMeasurementLabel.InvokeRequired)
+            {
+                SetTimeInMeasurementSafely d = new SetTimeInMeasurementSafely(SetTimeInMeasurement);
+                Invoke(d, new object[] { time });
+            }
+            else
+            {
+                timeInMeasurementLabel.Text = time;
             }
         }
 
