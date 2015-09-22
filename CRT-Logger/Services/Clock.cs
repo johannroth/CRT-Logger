@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRT_Logger.Services
 {
-    class Clock
+    public class Clock
     {
         public DateTime GetDateTime()
         {

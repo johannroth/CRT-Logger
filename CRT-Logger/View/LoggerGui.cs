@@ -18,15 +18,12 @@ namespace CRT_Logger
         public delegate void StartStopEventHandler(object sender, StartStopEventArgs e);
         public event StartStopEventHandler startStopEvent;
 
+        private Services.ModeManager modeManager;
+
         public LoggerGui()
         {
             InitializeComponent();
         }
-
-        public Button getButton(){
-            return startButton;
-        }
-
         
         /// <summary>
         /// Adds the specified string with a following NewLine-command to the logTextBox. 
@@ -78,6 +75,12 @@ namespace CRT_Logger
         }
         public delegate void SetButtonStatusSafely(Button modeButton, bool isLastClicked, bool isEnabled = true);
 
+        public void InitializeModes(Services.ModeManager modeManager)
+        {
+            this.modeManager = modeManager;
+            // TODO: add modes
+        }
+
         private void LoggerGui_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Do you really want to exit? All unsaved data will be lost.",
@@ -104,6 +107,13 @@ namespace CRT_Logger
             args.start = false;
             args.startStopButton = sender as Button;
             startStopEvent(sender, args);
+        }
+
+        private void AnyModeButton_Click(object sender, EventArgs e)
+        {
+            ModeButtonClickEventArgs args = new ModeButtonClickEventArgs();
+            args.modeButton = sender as Button;
+            modeButtonClick(sender, args);
         }
 
 

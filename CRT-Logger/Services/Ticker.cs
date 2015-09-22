@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRT_Logger.Services
 {
-    class Ticker
+    public class Ticker
     {
         private System.Timers.Timer ticker;
         private bool isRunning = false;

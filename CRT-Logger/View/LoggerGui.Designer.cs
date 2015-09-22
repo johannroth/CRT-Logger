@@ -69,20 +69,26 @@
             this.modeVVn80Button = new System.Windows.Forms.Button();
             this.modeVVn80Counter = new System.Windows.Forms.Label();
             this.modeAVcLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.modeAVc2Counter = new System.Windows.Forms.Label();
+            this.modeAVc2Button = new System.Windows.Forms.Button();
+            this.modeAVc2TextBox = new System.Windows.Forms.TextBox();
+            this.modeAVc1Counter = new System.Windows.Forms.Label();
             this.modeAVc1Button = new System.Windows.Forms.Button();
             this.modeAVc1TextBox = new System.Windows.Forms.TextBox();
-            this.modeAVc1Counter = new System.Windows.Forms.Label();
             this.modeVVcLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.modeVVc2Counter = new System.Windows.Forms.Label();
+            this.modeVVc2Button = new System.Windows.Forms.Button();
+            this.modeVVc2TextBox = new System.Windows.Forms.TextBox();
             this.modeVVc1Counter = new System.Windows.Forms.Label();
             this.modeVVc1Button = new System.Windows.Forms.Button();
             this.modeVVc1TextBox = new System.Windows.Forms.TextBox();
             this.modePanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.modeNotesLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.modeCustomNoteTextBox = new System.Windows.Forms.TextBox();
             this.modeCustomNoteButton = new System.Windows.Forms.Button();
             this.modeIdleButton = new System.Windows.Forms.Button();
-            this.modeCustomNoteTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.logTextBox = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.currentTimeStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -93,12 +99,6 @@
             this.patientFileButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
-            this.modeAVc2Counter = new System.Windows.Forms.Label();
-            this.modeAVc2Button = new System.Windows.Forms.Button();
-            this.modeAVc2TextBox = new System.Windows.Forms.TextBox();
-            this.modeVVc2Counter = new System.Windows.Forms.Label();
-            this.modeVVc2Button = new System.Windows.Forms.Button();
-            this.modeVVc2TextBox = new System.Windows.Forms.TextBox();
             this.patientNumberTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.selectFolderButton = new System.Windows.Forms.Button();
@@ -124,7 +124,7 @@
             this.modeAVLayoutPanel.AutoSize = true;
             this.modeAVLayoutPanel.ColumnCount = 2;
             this.modeAVLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.modeAVLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.modeAVLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.modeAVLayoutPanel.Controls.Add(this.modeAV320Button, 0, 9);
             this.modeAVLayoutPanel.Controls.Add(this.modeAV320Counter, 0, 9);
             this.modeAVLayoutPanel.Controls.Add(this.modeAV280Button, 0, 8);
@@ -170,6 +170,7 @@
             this.modeAV320Button.TabIndex = 18;
             this.modeAV320Button.Text = "AV 320";
             this.modeAV320Button.UseVisualStyleBackColor = true;
+            this.modeAV320Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV320Counter
             // 
@@ -191,6 +192,7 @@
             this.modeAV280Button.TabIndex = 16;
             this.modeAV280Button.Text = "AV 280";
             this.modeAV280Button.UseVisualStyleBackColor = true;
+            this.modeAV280Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV280Counter
             // 
@@ -212,6 +214,7 @@
             this.modeAV240Button.TabIndex = 14;
             this.modeAV240Button.Text = "AV 240";
             this.modeAV240Button.UseVisualStyleBackColor = true;
+            this.modeAV240Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV240Counter
             // 
@@ -233,6 +236,7 @@
             this.modeAV200Button.TabIndex = 12;
             this.modeAV200Button.Text = "AV 200";
             this.modeAV200Button.UseVisualStyleBackColor = true;
+            this.modeAV200Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV200Counter
             // 
@@ -254,6 +258,7 @@
             this.modeAV160Button.TabIndex = 10;
             this.modeAV160Button.Text = "AV 160";
             this.modeAV160Button.UseVisualStyleBackColor = true;
+            this.modeAV160Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV160Counter
             // 
@@ -275,6 +280,7 @@
             this.modeAV140Button.TabIndex = 8;
             this.modeAV140Button.Text = "AV 140";
             this.modeAV140Button.UseVisualStyleBackColor = true;
+            this.modeAV140Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV140Counter
             // 
@@ -297,6 +303,7 @@
             this.modeAV120Button.TabIndex = 6;
             this.modeAV120Button.Text = "AV 120 (Ref)";
             this.modeAV120Button.UseVisualStyleBackColor = true;
+            this.modeAV120Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV120Counter
             // 
@@ -318,6 +325,7 @@
             this.modeAV100Button.TabIndex = 4;
             this.modeAV100Button.Text = "AV 100";
             this.modeAV100Button.UseVisualStyleBackColor = true;
+            this.modeAV100Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV100Counter
             // 
@@ -339,6 +347,7 @@
             this.modeAV80Button.TabIndex = 2;
             this.modeAV80Button.Text = "AV 80";
             this.modeAV80Button.UseVisualStyleBackColor = true;
+            this.modeAV80Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV80Counter
             // 
@@ -360,6 +369,7 @@
             this.modeAV40Button.TabIndex = 0;
             this.modeAV40Button.Text = "AV 40";
             this.modeAV40Button.UseVisualStyleBackColor = true;
+            this.modeAV40Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeAV40Counter
             // 
@@ -378,7 +388,7 @@
             this.modeVVLayoutPanel.AutoSize = true;
             this.modeVVLayoutPanel.ColumnCount = 2;
             this.modeVVLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.modeVVLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.modeVVLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.modeVVLayoutPanel.Controls.Add(this.modeVV80Button, 0, 8);
             this.modeVVLayoutPanel.Controls.Add(this.modeVV80Counter, 0, 8);
             this.modeVVLayoutPanel.Controls.Add(this.modeVV60Button, 0, 7);
@@ -422,6 +432,7 @@
             this.modeVV80Button.TabIndex = 16;
             this.modeVV80Button.Text = "VV 80 (RV first)";
             this.modeVV80Button.UseVisualStyleBackColor = true;
+            this.modeVV80Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVV80Counter
             // 
@@ -443,6 +454,7 @@
             this.modeVV60Button.TabIndex = 14;
             this.modeVV60Button.Text = "VV 60";
             this.modeVV60Button.UseVisualStyleBackColor = true;
+            this.modeVV60Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVV60Counter
             // 
@@ -464,6 +476,7 @@
             this.modeVV40Button.TabIndex = 12;
             this.modeVV40Button.Text = "VV 40";
             this.modeVV40Button.UseVisualStyleBackColor = true;
+            this.modeVV40Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVV40Counter
             // 
@@ -485,6 +498,7 @@
             this.modeVV20Button.TabIndex = 10;
             this.modeVV20Button.Text = "VV 20";
             this.modeVV20Button.UseVisualStyleBackColor = true;
+            this.modeVV20Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVV20Counter
             // 
@@ -507,6 +521,7 @@
             this.modeVV0Button.TabIndex = 8;
             this.modeVV0Button.Text = "VV 0 (Ref)";
             this.modeVV0Button.UseVisualStyleBackColor = true;
+            this.modeVV0Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVV0Counter
             // 
@@ -528,6 +543,7 @@
             this.modeVVn20Button.TabIndex = 6;
             this.modeVVn20Button.Text = "VV -20";
             this.modeVVn20Button.UseVisualStyleBackColor = true;
+            this.modeVVn20Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVVn20Counter
             // 
@@ -549,6 +565,7 @@
             this.modeVVn40Button.TabIndex = 4;
             this.modeVVn40Button.Text = "VV -40";
             this.modeVVn40Button.UseVisualStyleBackColor = true;
+            this.modeVVn40Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVVn40Counter
             // 
@@ -570,6 +587,7 @@
             this.modeVVn60Button.TabIndex = 2;
             this.modeVVn60Button.Text = "VV -60";
             this.modeVVn60Button.UseVisualStyleBackColor = true;
+            this.modeVVn60Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVVn60Counter
             // 
@@ -591,6 +609,7 @@
             this.modeVVn80Button.TabIndex = 0;
             this.modeVVn80Button.Text = "VV -80 (LV first)";
             this.modeVVn80Button.UseVisualStyleBackColor = true;
+            this.modeVVn80Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVVn80Counter
             // 
@@ -609,7 +628,7 @@
             this.modeAVcLayoutPanel.ColumnCount = 3;
             this.modeAVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.modeAVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.modeAVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.modeAVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.modeAVcLayoutPanel.Controls.Add(this.modeAVc2Counter, 2, 1);
             this.modeAVcLayoutPanel.Controls.Add(this.modeAVc2Button, 0, 1);
             this.modeAVcLayoutPanel.Controls.Add(this.modeAVc2TextBox, 1, 1);
@@ -624,24 +643,36 @@
             this.modeAVcLayoutPanel.Size = new System.Drawing.Size(200, 60);
             this.modeAVcLayoutPanel.TabIndex = 2;
             // 
-            // modeAVc1Button
+            // modeAVc2Counter
             // 
-            this.modeAVc1Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeAVc1Button.Location = new System.Drawing.Point(3, 3);
-            this.modeAVc1Button.Name = "modeAVc1Button";
-            this.modeAVc1Button.Size = new System.Drawing.Size(104, 24);
-            this.modeAVc1Button.TabIndex = 19;
-            this.modeAVc1Button.Text = "Custom AV 1";
-            this.modeAVc1Button.UseVisualStyleBackColor = true;
+            this.modeAVc2Counter.AutoSize = true;
+            this.modeAVc2Counter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeAVc2Counter.Location = new System.Drawing.Point(153, 30);
+            this.modeAVc2Counter.Name = "modeAVc2Counter";
+            this.modeAVc2Counter.Size = new System.Drawing.Size(44, 30);
+            this.modeAVc2Counter.TabIndex = 24;
+            this.modeAVc2Counter.Text = "00";
+            this.modeAVc2Counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // modeAVc1TextBox
+            // modeAVc2Button
             // 
-            this.modeAVc1TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeAVc1TextBox.Location = new System.Drawing.Point(113, 4);
-            this.modeAVc1TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.modeAVc1TextBox.Name = "modeAVc1TextBox";
-            this.modeAVc1TextBox.Size = new System.Drawing.Size(34, 22);
-            this.modeAVc1TextBox.TabIndex = 20;
+            this.modeAVc2Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeAVc2Button.Location = new System.Drawing.Point(3, 33);
+            this.modeAVc2Button.Name = "modeAVc2Button";
+            this.modeAVc2Button.Size = new System.Drawing.Size(104, 24);
+            this.modeAVc2Button.TabIndex = 22;
+            this.modeAVc2Button.Text = "Custom AV 2";
+            this.modeAVc2Button.UseVisualStyleBackColor = true;
+            this.modeAVc2Button.Click += new System.EventHandler(this.AnyModeButton_Click);
+            // 
+            // modeAVc2TextBox
+            // 
+            this.modeAVc2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeAVc2TextBox.Location = new System.Drawing.Point(113, 34);
+            this.modeAVc2TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.modeAVc2TextBox.Name = "modeAVc2TextBox";
+            this.modeAVc2TextBox.Size = new System.Drawing.Size(34, 22);
+            this.modeAVc2TextBox.TabIndex = 23;
             // 
             // modeAVc1Counter
             // 
@@ -654,13 +685,33 @@
             this.modeAVc1Counter.Text = "00";
             this.modeAVc1Counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // modeAVc1Button
+            // 
+            this.modeAVc1Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeAVc1Button.Location = new System.Drawing.Point(3, 3);
+            this.modeAVc1Button.Name = "modeAVc1Button";
+            this.modeAVc1Button.Size = new System.Drawing.Size(104, 24);
+            this.modeAVc1Button.TabIndex = 19;
+            this.modeAVc1Button.Text = "Custom AV 1";
+            this.modeAVc1Button.UseVisualStyleBackColor = true;
+            this.modeAVc1Button.Click += new System.EventHandler(this.AnyModeButton_Click);
+            // 
+            // modeAVc1TextBox
+            // 
+            this.modeAVc1TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeAVc1TextBox.Location = new System.Drawing.Point(113, 4);
+            this.modeAVc1TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.modeAVc1TextBox.Name = "modeAVc1TextBox";
+            this.modeAVc1TextBox.Size = new System.Drawing.Size(34, 22);
+            this.modeAVc1TextBox.TabIndex = 20;
+            // 
             // modeVVcLayoutPanel
             // 
             this.modeVVcLayoutPanel.AutoSize = true;
             this.modeVVcLayoutPanel.ColumnCount = 3;
             this.modeVVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.modeVVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.modeVVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.modeVVcLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.modeVVcLayoutPanel.Controls.Add(this.modeVVc2Counter, 2, 1);
             this.modeVVcLayoutPanel.Controls.Add(this.modeVVc2Button, 0, 1);
             this.modeVVcLayoutPanel.Controls.Add(this.modeVVc2TextBox, 1, 1);
@@ -674,6 +725,37 @@
             this.modeVVcLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.modeVVcLayoutPanel.Size = new System.Drawing.Size(200, 60);
             this.modeVVcLayoutPanel.TabIndex = 3;
+            // 
+            // modeVVc2Counter
+            // 
+            this.modeVVc2Counter.AutoSize = true;
+            this.modeVVc2Counter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeVVc2Counter.Location = new System.Drawing.Point(153, 30);
+            this.modeVVc2Counter.Name = "modeVVc2Counter";
+            this.modeVVc2Counter.Size = new System.Drawing.Size(44, 30);
+            this.modeVVc2Counter.TabIndex = 24;
+            this.modeVVc2Counter.Text = "00";
+            this.modeVVc2Counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // modeVVc2Button
+            // 
+            this.modeVVc2Button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeVVc2Button.Location = new System.Drawing.Point(3, 33);
+            this.modeVVc2Button.Name = "modeVVc2Button";
+            this.modeVVc2Button.Size = new System.Drawing.Size(104, 24);
+            this.modeVVc2Button.TabIndex = 22;
+            this.modeVVc2Button.Text = "Custom VV 2";
+            this.modeVVc2Button.UseVisualStyleBackColor = true;
+            this.modeVVc2Button.Click += new System.EventHandler(this.AnyModeButton_Click);
+            // 
+            // modeVVc2TextBox
+            // 
+            this.modeVVc2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeVVc2TextBox.Location = new System.Drawing.Point(113, 34);
+            this.modeVVc2TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.modeVVc2TextBox.Name = "modeVVc2TextBox";
+            this.modeVVc2TextBox.Size = new System.Drawing.Size(34, 22);
+            this.modeVVc2TextBox.TabIndex = 23;
             // 
             // modeVVc1Counter
             // 
@@ -695,6 +777,7 @@
             this.modeVVc1Button.TabIndex = 19;
             this.modeVVc1Button.Text = "Custom VV 1";
             this.modeVVc1Button.UseVisualStyleBackColor = true;
+            this.modeVVc1Button.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeVVc1TextBox
             // 
@@ -720,14 +803,6 @@
             this.modePanel.Size = new System.Drawing.Size(422, 475);
             this.modePanel.TabIndex = 4;
             // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(209, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(2, 390);
-            this.label1.TabIndex = 4;
-            // 
             // modeNotesLayoutPanel
             // 
             this.modeNotesLayoutPanel.ColumnCount = 2;
@@ -744,13 +819,14 @@
             this.modeNotesLayoutPanel.Size = new System.Drawing.Size(414, 60);
             this.modeNotesLayoutPanel.TabIndex = 5;
             // 
-            // label2
+            // modeCustomNoteTextBox
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(3, 404);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(414, 2);
-            this.label2.TabIndex = 6;
+            this.modeCustomNoteTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.modeCustomNoteTextBox.Location = new System.Drawing.Point(210, 34);
+            this.modeCustomNoteTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
+            this.modeCustomNoteTextBox.Name = "modeCustomNoteTextBox";
+            this.modeCustomNoteTextBox.Size = new System.Drawing.Size(201, 22);
+            this.modeCustomNoteTextBox.TabIndex = 22;
             // 
             // modeCustomNoteButton
             // 
@@ -761,6 +837,7 @@
             this.modeCustomNoteButton.TabIndex = 21;
             this.modeCustomNoteButton.Text = "Custom Note";
             this.modeCustomNoteButton.UseVisualStyleBackColor = true;
+            this.modeCustomNoteButton.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
             // modeIdleButton
             // 
@@ -772,15 +849,23 @@
             this.modeIdleButton.TabIndex = 20;
             this.modeIdleButton.Text = "Idle Note";
             this.modeIdleButton.UseVisualStyleBackColor = true;
+            this.modeIdleButton.Click += new System.EventHandler(this.AnyModeButton_Click);
             // 
-            // modeCustomNoteTextBox
+            // label2
             // 
-            this.modeCustomNoteTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeCustomNoteTextBox.Location = new System.Drawing.Point(210, 34);
-            this.modeCustomNoteTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.modeCustomNoteTextBox.Name = "modeCustomNoteTextBox";
-            this.modeCustomNoteTextBox.Size = new System.Drawing.Size(201, 22);
-            this.modeCustomNoteTextBox.TabIndex = 22;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label2.Location = new System.Drawing.Point(3, 404);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(414, 2);
+            this.label2.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(209, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(2, 390);
+            this.label1.TabIndex = 4;
             // 
             // logTextBox
             // 
@@ -885,66 +970,6 @@
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
-            // modeAVc2Counter
-            // 
-            this.modeAVc2Counter.AutoSize = true;
-            this.modeAVc2Counter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeAVc2Counter.Location = new System.Drawing.Point(153, 30);
-            this.modeAVc2Counter.Name = "modeAVc2Counter";
-            this.modeAVc2Counter.Size = new System.Drawing.Size(44, 30);
-            this.modeAVc2Counter.TabIndex = 24;
-            this.modeAVc2Counter.Text = "00";
-            this.modeAVc2Counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // modeAVc2Button
-            // 
-            this.modeAVc2Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeAVc2Button.Location = new System.Drawing.Point(3, 33);
-            this.modeAVc2Button.Name = "modeAVc2Button";
-            this.modeAVc2Button.Size = new System.Drawing.Size(104, 24);
-            this.modeAVc2Button.TabIndex = 22;
-            this.modeAVc2Button.Text = "Custom AV 2";
-            this.modeAVc2Button.UseVisualStyleBackColor = true;
-            // 
-            // modeAVc2TextBox
-            // 
-            this.modeAVc2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeAVc2TextBox.Location = new System.Drawing.Point(113, 34);
-            this.modeAVc2TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.modeAVc2TextBox.Name = "modeAVc2TextBox";
-            this.modeAVc2TextBox.Size = new System.Drawing.Size(34, 22);
-            this.modeAVc2TextBox.TabIndex = 23;
-            // 
-            // modeVVc2Counter
-            // 
-            this.modeVVc2Counter.AutoSize = true;
-            this.modeVVc2Counter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeVVc2Counter.Location = new System.Drawing.Point(153, 30);
-            this.modeVVc2Counter.Name = "modeVVc2Counter";
-            this.modeVVc2Counter.Size = new System.Drawing.Size(44, 30);
-            this.modeVVc2Counter.TabIndex = 24;
-            this.modeVVc2Counter.Text = "00";
-            this.modeVVc2Counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // modeVVc2Button
-            // 
-            this.modeVVc2Button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeVVc2Button.Location = new System.Drawing.Point(3, 33);
-            this.modeVVc2Button.Name = "modeVVc2Button";
-            this.modeVVc2Button.Size = new System.Drawing.Size(104, 24);
-            this.modeVVc2Button.TabIndex = 22;
-            this.modeVVc2Button.Text = "Custom VV 2";
-            this.modeVVc2Button.UseVisualStyleBackColor = true;
-            // 
-            // modeVVc2TextBox
-            // 
-            this.modeVVc2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.modeVVc2TextBox.Location = new System.Drawing.Point(113, 34);
-            this.modeVVc2TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
-            this.modeVVc2TextBox.Name = "modeVVc2TextBox";
-            this.modeVVc2TextBox.Size = new System.Drawing.Size(34, 22);
-            this.modeVVc2TextBox.TabIndex = 23;
             // 
             // patientNumberTextbox
             // 

@@ -22,6 +22,10 @@ namespace CRT_Logger.Control
             loggerGui.modeButtonClick += OnModeButtonClick;
             loggerGui.startStopEvent += OnStartStopEvent;
             secTicker.tick += OnTick;
+
+            // Create new mode manager and tell view that it can initialize its modes.
+            modeManager = new Services.ModeManager();
+            loggerGui.InitializeModes(modeManager);
         }
 
         private void OnTick(object source, EventArgs e)
@@ -32,6 +36,7 @@ namespace CRT_Logger.Control
         {
             Button button = e.startStopButton;
             bool start = e.start;
+            Console.Beep();
 
             // Code for start routine
 
@@ -39,7 +44,10 @@ namespace CRT_Logger.Control
         }
         private void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
         {
-            
+            Button button = e.modeButton;
+            // test!
+            loggerGui.SetButtonStatus(button, true);
+
         }
 
         private void EnableUiModeButtons(bool enable)
