@@ -18,7 +18,7 @@ namespace CRT_Logger.Services
         private Label counter;
         private TextBox textBox;
         // String for modeType, needed for custom modes.
-        // can be "AV", "VV" or "Note".
+        // can be "AV" or "VV".
         string modeType;
         // Bools to specify type of mode.
         bool isReference = false;
@@ -144,11 +144,25 @@ namespace CRT_Logger.Services
             count = 0;
         }
         /// <summary>
+        /// Returns current count.
+        /// </summary>
+        public int GetCount()
+        {
+            return count;
+        }
+        /// <summary>
         /// Returns the LogId.
         /// </summary>
         public string GetLogId()
         {
             return logId;
+        }
+        /// <summary>
+        /// Returns the modeType string.
+        /// </summary>
+        public string GetModeType()
+        {
+            return modeType;
         }
         /// <summary>
         /// Sets the LogId to the specified string.

@@ -46,9 +46,33 @@ namespace CRT_Logger.Control
             loggerGui.EnableStartStopButtons(true);
             loggerGui.ResetModeCounters();
             loggerGui.ResetTimeInMode();
+            loggerGui.ResetLog();
 
             // Start the ticker to get current time
             secTicker.StartTicker();
+        }
+
+        /// <summary>
+        /// Creates the string for a new log line without newline command.
+        /// Writes this string to TxtFile and TextBox on Gui.
+        /// </summary>
+        private void CreateLogLine(Services.Mode mode)
+        {
+            string time = clock.GetDateTime().ToString("HH:mm:ss.fff");
+            string runningFor = clock.GetTimeSinceStringLong(measurementStartTime);
+            string logId = mode.GetLogId();
+
+            string logLine = String.Format("{0}, {1}, {2}", time,
+                runningFor, logId);
+
+            loggerGui.AddLogLine(logLine);
+        }
+        private string CreateLogLineString(string customLogNote)
+        {
+            string time = clock.GetDateTime().ToString("HH:mm:ss.fff");
+            string runningFor = clock.GetTimeSinceStringLong(measurementStartTime);
+
+            return String.Format("{0}, {1}, {2}", time, runningFor, customLogNote);
         }
 
         private void OnNewActiveModeEvent(object sender, NewActiveModeEventArgs e)
@@ -89,6 +113,7 @@ namespace CRT_Logger.Control
                 "End Measurement", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     // Code for stop routine.
+                    loggerGui.AddLogLine(CreateLogLineString("STOP"));
                     modeSecTicker.StopTicker();
                     measurementSecTicker.StopTicker();
                     loggerGui.ResetTimeInMode();
@@ -111,6 +136,8 @@ namespace CRT_Logger.Control
                 loggerGui.EnableModeButtons(start);
                 loggerGui.EnableStartStopButtons(!start);
                 loggerGui.SetRecordingStatus(start);
+                loggerGui.ResetLog();
+                loggerGui.AddLogLine(CreateLogLineString("START"));
             }
 
         }
@@ -119,15 +146,53 @@ namespace CRT_Logger.Control
             Button button = e.modeButton;
             Services.Mode mode = modeManager.GetMode(button);
             Label counter = mode.GetCounter();
+            TextBox textBox = mode.GetTextBox();
 
-            if (modeManager.GetActiveMode() != mode)
+            // Read custom text, if custom mode button was clicked.
+            if (mode.IsCustom())
             {
+                string logId = loggerGui.GetCustomText(textBox);
+
+                // If no custom Text is entered, text will be "custom".
+                if (logId == "")
+                {
+                    logId = "custom";
+                }
+
+                // For custom modes that are not annotations,
+                // logId will contain the modeType aswell.
+                if (!mode.IsAnnotation())
+                {
+                    logId = mode.GetModeType() + " " + logId;
+                }
+                // Annotations will get the additional string "NOTE "
+                else
+                {
+                    logId = "NOTE '" + logId + "'";
+                }
+                
+                mode.SetLogId(logId);
+            }
+            
+            // Immediately create logLine for Custom annotations
+            if (mode.IsAnnotation() && mode.IsCustom())
+            {
+                CreateLogLine(mode);
+            }
+            // For all other mode buttons check if button was already clicked.
+            else if (modeManager.GetActiveMode() != mode)
+            {
+                CreateLogLine(mode);
+                
+                // Set mode and button as active. Increase Count.
                 modeManager.SetActiveMode(button);
                 int count = mode.IncreaseCount();
                 if (counter != null)
                 {
                     loggerGui.SetModeCounter(counter, count, mode.IsOverLimit());
                 }
+
+                // Reset the time in Mode Ticker.
                 modeSecTicker.ResetTicker();
                 loggerGui.ResetTimeInMode();
             }

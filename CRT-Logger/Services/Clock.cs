@@ -23,10 +23,18 @@ namespace CRT_Logger.Services
         {
             return DateTime.Now.Subtract(timeInPast);
         }
+        /// <summary>
+        /// Returns a long time string in the format hh:mm:ss.fff.
+        /// </summary>
+        /// <param name="timeInPast">DateTime in the past.</param>
         public string GetTimeSinceStringLong(DateTime timeInPast)
         {
             return DateTime.Now.Subtract(timeInPast).ToString(@"hh\:mm\:ss\.fff");
         }
+        /// <summary>
+        /// Returns a short time string in the format hh:mm:ss.
+        /// </summary>
+        /// <param name="timeInPast">DateTime in the past.</param>
         public string GetTimeSinceStringShort(DateTime timeInPast)
         {
             return DateTime.Now.Subtract(timeInPast).ToString(@"hh\:mm\:ss");

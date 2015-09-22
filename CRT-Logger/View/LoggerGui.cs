@@ -31,6 +31,7 @@ namespace CRT_Logger
 
         // Delegates to ensure thread safety.
         public delegate void AddLogLineSafely(string logLine);
+        public delegate void ResetLogSafely();
         public delegate void SetButtonStatusSafely(Button modeButton, bool isLastClicked);
         public delegate void EnableStartStopButtonsSafely(bool enable);
         public delegate void EnableModeButtonsSafely(bool enable);
@@ -61,6 +62,21 @@ namespace CRT_Logger
                 logTextBox.Text += newLine;
                 logTextBox.SelectionStart = logTextBox.TextLength;
                 logTextBox.ScrollToCaret();
+            }
+        }
+        /// <summary>
+        /// Resets text in logTextBox. 
+        /// </summary>
+        public void ResetLog()
+        {
+            if (logTextBox.InvokeRequired)
+            {
+                ResetLogSafely d = new ResetLogSafely(ResetLog);
+                Invoke(d, new object[] { });
+            }
+            else
+            {
+                logTextBox.Text = "";
             }
         }
         /// <summary>
@@ -308,14 +324,14 @@ namespace CRT_Logger
             modeManager.AddMode(new Services.Mode("AVc 00", modeAVc2Button, modeAVc2Counter, modeAVc2TextBox, "AV"));
             modeManager.AddMode(new Services.Mode("VVc 00", modeVVc1Button, modeVVc1Counter, modeVVc1TextBox, "VV"));
             modeManager.AddMode(new Services.Mode("VVc 00", modeVVc2Button, modeVVc2Counter, modeVVc2TextBox, "VV"));
-            modeManager.AddMode(new Services.Mode("Idle", modeIdleButton));
-            modeManager.AddMode(new Services.Mode("Note", modeCustomNoteButton, modeCustomNoteTextBox));
+            modeManager.AddMode(new Services.Mode("IDLE", modeIdleButton));
+            modeManager.AddMode(new Services.Mode("NOTE: ", modeCustomNoteButton, modeCustomNoteTextBox));
         }
         /// <summary>
         /// Returns text of custom note textbox.
         /// </summary>
         /// <param name="textBox">Textbox whose Text will be returned.</param>
-        public string GetCustomNoteText(TextBox textBox)
+        public string GetCustomText(TextBox textBox)
         {
             return textBox.Text;
         }
