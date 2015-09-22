@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Control\LoggerController.cs" />
     <Compile Include="ModeButtonClickEventArgs.cs" />
+    <Compile Include="NewActiveModeEventArgs.cs" />
     <Compile Include="Services\Clock.cs" />
     <Compile Include="Services\Mode.cs" />
     <Compile Include="Services\ModeManager.cs" />

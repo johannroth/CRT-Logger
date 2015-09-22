@@ -20,15 +20,36 @@ namespace CRT_Logger.Control
         {
             this.loggerGui = loggerGui;
             secTicker = new Services.Ticker(1000);
+
+            // Listen to ButtonClick Events in GUI.
             loggerGui.modeButtonClick += OnModeButtonClick;
             loggerGui.startStopEvent += OnStartStopEvent;
+            // Listen to Tick Events of Ticker.
             secTicker.tick += OnTick;
 
-            // Create new mode manager and tell view that it can initialize its modes.
+            // Create new mode manager and listen to its Events.
             modeManager = new Services.ModeManager();
+            modeManager.newActiveModeEvent += OnNewActiveModeEvent;
+            // Initialize all modes in gui.
             loggerGui.InitializeModes(modeManager);
+
+            // Disable all mode buttons at start of software.
+            loggerGui.EnableModeButtons(false);
+            loggerGui.EnableStartStopButtons(true);
+            loggerGui.ResetModeCounters();
         }
 
+        private void OnNewActiveModeEvent(object sender, NewActiveModeEventArgs e)
+        {
+            if (e.lastActive != null)
+            {
+                loggerGui.SetButtonStatus(e.lastActive, false);
+            }
+            if (e.newActive != null)
+            {
+                loggerGui.SetButtonStatus(e.newActive, true);
+            }
+        }
         private void OnTick(object source, EventArgs e)
         {
             
@@ -37,35 +58,42 @@ namespace CRT_Logger.Control
         {
             Button button = e.startStopButton;
             bool start = e.start;
-            EnableUiModeButtons(start);
+            if(!start)
+            {
+                if (MessageBox.Show("Do you really want to finish measurement? Timers will be reset!",
+                "End Measurement", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    // Code for stop routine.
+                    modeManager.SetNoModeActive();
+                    loggerGui.EnableModeButtons(start);
+                    loggerGui.EnableStartStopButtons(!start);
+                    loggerGui.ResetModeCounters();
+                }
+            }
+            else
+            {
+                // Code for start routine.
+                modeManager.SetNoModeActive();
+                loggerGui.EnableModeButtons(start);
+                loggerGui.EnableStartStopButtons(!start);
+            }
 
-            // Code for start routine
-
-            // Code for stop routine
         }
         private void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
         {
             Button button = e.modeButton;
-            // test!
-            loggerGui.SetButtonStatus(button, true);
+            Services.Mode mode = modeManager.GetMode(button);
+            Label counter = mode.GetCounter();
 
-        }
-
-        /// <summary>
-        /// Enables or disables all ModeButton.
-        /// Enabling or disabling all Buttons with reset lastClicked Status.
-        /// </summary>
-        /// <param name="enable">Bool to specify if buttons will be enabled or disabled.</param>
-        /// <returns></returns>
-        private void EnableUiModeButtons(bool enable)
-        {
-            Hashtable modes = modeManager.GetModeHashtable();
-            foreach (DictionaryEntry mode in modes)
+            if (modeManager.GetActiveMode() != mode)
             {
-                Button modeButton = mode.Key as Button;
-                loggerGui.SetButtonStatus(modeButton, false, enable);
+                modeManager.SetActiveMode(button);
+                int count = mode.IncreaseCount();
+                if (counter != null)
+                {
+                    loggerGui.SetModeCounter(counter, count, mode.IsOverLimit());
+                }
             }
-            modeManager.SetActiveMode(null);
         }
     }
 }

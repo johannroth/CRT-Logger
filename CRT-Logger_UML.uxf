@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>105</x>
-      <y>42</y>
-      <w>385</w>
-      <h>889</h>
+      <x>18</x>
+      <y>135</y>
+      <w>495</w>
+      <h>1143</h>
     </coordinates>
     <panel_attributes>LoggerGui ( View )
 --
@@ -81,6 +81,8 @@
 
 + string GetCustomText(textBox)
 
+++ void EnableModeButtons(bool enable)
+++ void EnableStartStopButtons(bool enableStart)
 ++ void SetButtonStatus(modeButton, isLastClicked, [isEnabled])
 ++ void SetModeCounter(modeCounter, count, isOverLimit)
 ++ void SetStatusMessage(statusMessage)
@@ -95,15 +97,18 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>980</x>
-      <y>56</y>
-      <w>196</w>
-      <h>98</h>
+      <x>1143</x>
+      <y>108</y>
+      <w>252</w>
+      <h>162</h>
     </coordinates>
     <panel_attributes>ModeManager ( Services )
 --
 - Hashtable modes // (modeButton, mode) 
 - Mode activeMode
+--
++ delegate void newActiveModeEventHandler(Object sender, NewActiveModeEventArgs e)
++ event newActiveModeEventHandler newActiveModeEvent
 --
 + Mode GetMode(button)
 + Mode GetActiveMode()
@@ -116,10 +121,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>931</x>
-      <y>203</y>
-      <w>294</w>
-      <h>329</h>
+      <x>1080</x>
+      <y>342</y>
+      <w>378</w>
+      <h>423</h>
     </coordinates>
     <panel_attributes>Mode ( Services )
 --
@@ -157,10 +162,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>931</x>
-      <y>686</y>
-      <w>280</w>
-      <h>56</h>
+      <x>1080</x>
+      <y>963</y>
+      <w>360</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Programm
 --
@@ -173,24 +178,24 @@ loggerController = new LoggerController(gui, modeManager)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1071</x>
-      <y>147</y>
-      <w>21</w>
-      <h>70</h>
+      <x>1260</x>
+      <y>261</y>
+      <w>27</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=n
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>525</x>
-      <y>84</y>
-      <w>392</w>
-      <h>217</h>
+      <x>558</x>
+      <y>189</y>
+      <w>504</w>
+      <h>279</h>
     </coordinates>
     <panel_attributes>LoggerController ( Control )
 --
@@ -207,18 +212,16 @@ m2=n
 	
 - void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
 - void OnStartStopEvent(object sender, StartStopEventArgs e)
-
-- void EnableUiModeButtons(bool enable)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>161</y>
-      <w>56</w>
-      <h>28</h>
+      <x>504</x>
+      <y>288</y>
+      <w>72</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -227,10 +230,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>539</x>
-      <y>315</y>
-      <w>273</w>
-      <h>70</h>
+      <x>576</x>
+      <y>486</y>
+      <w>351</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>Clock ( Services )
 --
@@ -245,10 +248,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>525</x>
-      <y>399</y>
-      <w>315</w>
-      <h>147</h>
+      <x>558</x>
+      <y>594</y>
+      <w>405</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>Ticker ( Services )
 --
@@ -269,10 +272,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>525</x>
-      <y>560</y>
-      <w>203</w>
-      <h>35</h>
+      <x>558</x>
+      <y>801</y>
+      <w>261</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>ModeButtonClickEventArgs : EventArgs
 --
@@ -285,10 +288,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>525</x>
-      <y>609</y>
-      <w>203</w>
-      <h>42</h>
+      <x>558</x>
+      <y>864</y>
+      <w>261</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>StartStopEventArgs : EventArgs
 --
@@ -302,10 +305,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>504</y>
-      <w>56</w>
-      <h>70</h>
+      <x>504</x>
+      <y>729</y>
+      <w>72</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -314,10 +317,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>532</y>
-      <w>56</w>
-      <h>91</h>
+      <x>504</x>
+      <y>765</y>
+      <w>72</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -326,10 +329,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
-      <y>294</y>
-      <w>21</w>
-      <h>35</h>
+      <x>576</x>
+      <y>459</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -338,10 +341,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>525</x>
-      <y>294</y>
-      <w>21</w>
-      <h>119</h>
+      <x>558</x>
+      <y>459</y>
+      <w>27</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -350,10 +353,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>749</y>
-      <w>203</w>
-      <h>56</h>
+      <x>1179</x>
+      <y>1044</y>
+      <w>261</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>--
 (-) private
@@ -364,34 +367,34 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>910</x>
-      <y>77</y>
-      <w>84</w>
-      <h>63</h>
+      <x>1053</x>
+      <y>135</y>
+      <w>108</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;70.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>483</x>
-      <y>56</y>
-      <w>511</w>
-      <h>28</h>
+      <x>504</x>
+      <y>117</y>
+      <w>657</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;20.0;710.0;20.0</additional_attributes>
+    <additional_attributes>10.0;60.0;710.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>882</x>
-      <y>546</y>
-      <w>175</w>
-      <h>119</h>
+      <x>1017</x>
+      <y>783</y>
+      <w>225</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>TxtWriter ( Services )
 --
@@ -411,10 +414,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>294</y>
-      <w>21</w>
-      <h>266</h>
+      <x>1017</x>
+      <y>459</y>
+      <w>27</w>
+      <h>342</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -423,10 +426,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>686</x>
-      <y>700</y>
-      <w>224</w>
-      <h>77</h>
+      <x>765</x>
+      <y>981</y>
+      <w>288</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>PatientDataGui ( View )
 --
@@ -438,10 +441,10 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>854</x>
-      <y>294</y>
-      <w>21</w>
-      <h>420</h>
+      <x>981</x>
+      <y>459</y>
+      <w>27</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -450,13 +453,42 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>658</y>
-      <w>21</w>
-      <h>56</h>
+      <x>1017</x>
+      <y>927</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>963</x>
+      <y>0</y>
+      <w>261</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>NewActiveModeEventArgs : EventArgs
+--
++ Button newActive
++ Button lastActive
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>45</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

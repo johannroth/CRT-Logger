@@ -667,6 +667,7 @@
             // 
             // modeAVc2TextBox
             // 
+            this.modeAVc2TextBox.BackColor = System.Drawing.SystemColors.Window;
             this.modeAVc2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modeAVc2TextBox.Location = new System.Drawing.Point(113, 34);
             this.modeAVc2TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
@@ -698,6 +699,7 @@
             // 
             // modeAVc1TextBox
             // 
+            this.modeAVc1TextBox.BackColor = System.Drawing.SystemColors.Window;
             this.modeAVc1TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modeAVc1TextBox.Location = new System.Drawing.Point(113, 4);
             this.modeAVc1TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
@@ -750,6 +752,7 @@
             // 
             // modeVVc2TextBox
             // 
+            this.modeVVc2TextBox.BackColor = System.Drawing.SystemColors.Window;
             this.modeVVc2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modeVVc2TextBox.Location = new System.Drawing.Point(113, 34);
             this.modeVVc2TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
@@ -781,6 +784,7 @@
             // 
             // modeVVc1TextBox
             // 
+            this.modeVVc1TextBox.BackColor = System.Drawing.SystemColors.Window;
             this.modeVVc1TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modeVVc1TextBox.Location = new System.Drawing.Point(113, 4);
             this.modeVVc1TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
@@ -821,6 +825,7 @@
             // 
             // modeCustomNoteTextBox
             // 
+            this.modeCustomNoteTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.modeCustomNoteTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.modeCustomNoteTextBox.Location = new System.Drawing.Point(210, 34);
             this.modeCustomNoteTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 3);
