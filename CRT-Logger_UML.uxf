@@ -84,6 +84,8 @@
 + InitializeModes(modeManager)
 
 + string GetCustomText(textBox)
++ string GetSelectedFolder()
++ bool FilePathOk()
 
 ++ void EnableModeButtons(bool enable)
 ++ void EnableStartStopButtons(bool enableStart)

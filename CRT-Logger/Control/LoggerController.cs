@@ -129,18 +129,25 @@ namespace CRT_Logger.Control
             }
             else
             {
-                // Code for start routine.
-                measurementStartTime = clock.GetDateTime();
-                measurementSecTicker.StartTicker();
-                measurementRunning = true;
-                modeManager.SetNoModeActive();
-                loggerGui.EnableModeButtons(start);
-                loggerGui.EnableStartStopButtons(!start);
-                loggerGui.SetRecordingStatus(start);
-                loggerGui.ResetLog();
-                loggerGui.AddLogLine(CreateLogLineString("START"));
+                // Check if a valid file path was selected before.
+                if (loggerGui.FilePathOk())
+                {
+                    // Code for start routine.
+                    measurementStartTime = clock.GetDateTime();
+                    measurementSecTicker.StartTicker();
+                    measurementRunning = true;
+                    modeManager.SetNoModeActive();
+                    loggerGui.EnableModeButtons(start);
+                    loggerGui.EnableStartStopButtons(!start);
+                    loggerGui.SetRecordingStatus(start);
+                    loggerGui.ResetLog();
+                    loggerGui.AddLogLine(CreateLogLineString("START"));
+                }                
+                else
+                {
+                    MessageBox.Show("Select a valid folder first!", "Folder missing", MessageBoxButtons.OK);
+                }
             }
-
         }
         private void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
         {

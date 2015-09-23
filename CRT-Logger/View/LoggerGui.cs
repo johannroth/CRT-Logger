@@ -336,6 +336,20 @@ namespace CRT_Logger
         {
             return textBox.Text;
         }
+        /// <summary>
+        /// Returns the selected folder as string.
+        /// </summary>
+        public string GetSelectedFolder()
+        {
+            return selectedFolderTextBox.Text;
+        }
+        /// <summary>
+        /// Returns true if a valid folder was selected.
+        /// </summary>
+        public bool FilePathOk()
+        {
+            return filePathOk;
+        }
 
         // Eventhandlers
         private void LoggerGui_FormClosing(object sender, FormClosingEventArgs e)
@@ -358,20 +372,12 @@ namespace CRT_Logger
         }
         private void startButton_Click(object sender, EventArgs e)
         {
-            // Only when a valid path is selected you will be able to start
-            // the measurement.
-            if (filePathOk)
-            {
-                StartStopEventArgs args = new StartStopEventArgs();
-                args.start = true;
-                args.startStopButton = sender as Button;
-                startStopEvent(this, args);
-            }
-            else
-            {
-                MessageBox.Show("Select a valid folder first!", "Folder missing", MessageBoxButtons.OK);
-            }
-            
+
+            StartStopEventArgs args = new StartStopEventArgs();
+            args.start = true;
+            args.startStopButton = sender as Button;
+            startStopEvent(this, args);
+
         }
         private void stopButton_Click(object sender, EventArgs e)
         {
