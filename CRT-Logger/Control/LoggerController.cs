@@ -16,8 +16,8 @@ namespace CRT_Logger.Control
         private Services.Ticker modeSecTicker;
         private Services.Ticker measurementSecTicker;
         private Services.Clock clock;
+        private Services.TxtWriter logFile;
         private DateTime measurementStartTime;
-        private string currentFile;
 
         public LoggerController(LoggerGui loggerGui)
         {
@@ -65,6 +65,7 @@ namespace CRT_Logger.Control
             string logLine = String.Format("{0}, {1}, {2}", time,
                 runningFor, logId);
 
+            logFile.AddLine(logLine);
             loggerGui.AddLogLine(logLine);
         }
         private string CreateLogLineString(string customLogNote)
@@ -87,6 +88,7 @@ namespace CRT_Logger.Control
             loggerGui.SetCurrentFile(filePath);
 
             // Initialize TxtWriter
+            logFile = new Services.TxtWriter(filePath);
         }
 
         private void OnNewActiveModeEvent(object sender, NewActiveModeEventArgs e)
@@ -130,6 +132,7 @@ namespace CRT_Logger.Control
                 "End Measurement", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     // Code for stop routine.
+                    logFile.AddLine(stopLogLine);
                     loggerGui.AddLogLine(stopLogLine);
                     modeSecTicker.StopTicker();
                     measurementSecTicker.StopTicker();
@@ -150,15 +153,17 @@ namespace CRT_Logger.Control
                     // Code for start routine.
                     measurementStartTime = clock.GetDateTime();
 
-                    InitializeLogFile();                    
-
+                    InitializeLogFile();
+                    string startLogLine = CreateLogLineString("START");
                     measurementSecTicker.StartTicker();
                     modeManager.SetNoModeActive();
                     loggerGui.EnableModeButtons(start);
                     loggerGui.EnableStartStopButtons(!start);
                     loggerGui.SetRecordingStatus(start);
+
+                    logFile.AddLine(startLogLine);
                     loggerGui.ResetLog();
-                    loggerGui.AddLogLine(CreateLogLineString("START"));
+                    loggerGui.AddLogLine(startLogLine);
                 }                
                 else
                 {

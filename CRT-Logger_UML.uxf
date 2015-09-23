@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>9</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>81</x>
-      <y>72</y>
-      <w>495</w>
-      <h>1305</h>
+      <x>324</x>
+      <y>18</y>
+      <w>330</w>
+      <h>870</h>
     </coordinates>
     <panel_attributes>LoggerGui ( View )
 --
@@ -107,10 +107,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1206</x>
-      <y>9</y>
-      <w>252</w>
-      <h>207</h>
+      <x>1074</x>
+      <y>6</y>
+      <w>168</w>
+      <h>138</h>
     </coordinates>
     <panel_attributes>ModeManager ( Services )
 --
@@ -132,10 +132,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1143</x>
-      <y>279</y>
-      <w>378</w>
-      <h>477</h>
+      <x>1032</x>
+      <y>198</y>
+      <w>252</w>
+      <h>318</h>
     </coordinates>
     <panel_attributes>Mode ( Services )
 --
@@ -175,24 +175,24 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1323</x>
-      <y>207</y>
-      <w>27</w>
-      <h>90</h>
+      <x>1152</x>
+      <y>138</y>
+      <w>18</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=n
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>126</y>
-      <w>504</w>
-      <h>315</h>
+      <x>684</x>
+      <y>54</y>
+      <w>336</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>LoggerController ( Control )
 --
@@ -202,6 +202,7 @@ m2=n
 - Ticker secTicker
 - Ticker modeSecTicker
 - DateTime measurementStartTime
+- TxtWriter logFile
 - string currentFile
 --
 + GuiController(loggerGui, modeManager)
@@ -223,10 +224,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>225</y>
-      <w>72</w>
-      <h>36</h>
+      <x>648</x>
+      <y>120</y>
+      <w>48</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -235,10 +236,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>639</x>
-      <y>495</y>
-      <w>351</w>
-      <h>90</h>
+      <x>696</x>
+      <y>300</y>
+      <w>234</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Clock ( Services )
 --
@@ -253,10 +254,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>594</y>
-      <w>405</w>
-      <h>198</h>
+      <x>684</x>
+      <y>366</y>
+      <w>270</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>Ticker ( Services )
 --
@@ -278,10 +279,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
-      <y>801</y>
-      <w>261</w>
-      <h>45</h>
+      <x>714</x>
+      <y>504</y>
+      <w>174</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>ModeButtonClickEventArgs : EventArgs
 --
@@ -294,10 +295,10 @@ m2=n
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
-      <y>855</y>
-      <w>261</w>
-      <h>54</h>
+      <x>714</x>
+      <y>540</y>
+      <w>174</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>StartStopEventArgs : EventArgs
 --
@@ -311,10 +312,10 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>873</y>
-      <w>117</w>
-      <h>171</h>
+      <x>648</x>
+      <y>552</y>
+      <w>78</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -323,34 +324,34 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>639</x>
-      <y>432</y>
-      <w>27</w>
-      <h>81</h>
+      <x>696</x>
+      <y>282</y>
+      <w>18</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
-      <y>432</y>
-      <w>27</w>
-      <h>180</h>
+      <x>684</x>
+      <y>282</y>
+      <w>18</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1242</x>
-      <y>1017</y>
-      <w>261</w>
-      <h>72</h>
+      <x>1098</x>
+      <y>648</y>
+      <w>174</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>--
 (-) private
@@ -361,46 +362,42 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1116</x>
-      <y>72</y>
-      <w>108</w>
-      <h>126</h>
+      <x>1014</x>
+      <y>48</y>
+      <w>72</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;120.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>54</y>
-      <w>657</w>
-      <h>72</h>
+      <x>648</x>
+      <y>30</y>
+      <w>438</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;60.0;710.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;710.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1080</x>
-      <y>828</y>
-      <w>225</w>
-      <h>153</h>
+      <x>990</x>
+      <y>522</y>
+      <w>150</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>TxtWriter ( Services )
 --
 - string filePath
 --
-+ TxtWriter()
++ TxtWriter(string filePath)
 
-+ void SetFilePath(string filePath)
-+ bool CreateTxtFile()
-+ void OpenTxtFile()
 + void AddLine(string txtLine)
-+ bool CloseTxtFile()
 
 </panel_attributes>
     <additional_attributes/>
@@ -408,22 +405,22 @@ m2=n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>432</y>
-      <w>27</w>
-      <h>414</h>
+      <x>990</x>
+      <y>282</y>
+      <w>18</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>828</x>
-      <y>1053</y>
-      <w>288</w>
-      <h>99</h>
+      <x>822</x>
+      <y>636</y>
+      <w>192</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>PatientDataGui ( View )
 --
@@ -435,34 +432,34 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1044</x>
-      <y>432</y>
-      <w>27</w>
-      <h>639</h>
+      <x>966</x>
+      <y>282</y>
+      <w>18</w>
+      <h>366</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;690.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;590.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>972</y>
-      <w>27</w>
-      <h>99</h>
+      <x>990</x>
+      <y>588</y>
+      <w>18</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>873</x>
+      <x>846</x>
       <y>0</y>
-      <w>261</w>
-      <h>54</h>
+      <w>174</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>NewActiveModeEventArgs : EventArgs
 --
@@ -476,22 +473,22 @@ FolderBrowserDialog patientDataFolderDialog
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1125</x>
-      <y>18</y>
-      <w>99</w>
-      <h>36</h>
+      <x>1014</x>
+      <y>12</y>
+      <w>72</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>828</y>
-      <w>117</w>
-      <h>171</h>
+      <x>648</x>
+      <y>522</y>
+      <w>78</w>
+      <h>114</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
