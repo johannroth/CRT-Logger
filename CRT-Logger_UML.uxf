@@ -424,8 +424,11 @@ m2=n
     </coordinates>
     <panel_attributes>PatientDataGui ( View )
 --
-FolderBrowserDialog patientDataFolderDialog
+- bool filePathOk
+- FolderBrowserDialog patientDataFolderBrowserDialog
 --
++ bool FilePathOk()
+++ void SetPatientDataFolder(string patientDataFolder)
 </panel_attributes>
     <additional_attributes/>
   </element>

@@ -28,19 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientDataGui));
+            this.selectedFolderTextBox = new System.Windows.Forms.TextBox();
+            this.selectFolderButton = new System.Windows.Forms.Button();
+            this.patientDataFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
+            // 
+            // selectedFolderTextBox
+            // 
+            this.selectedFolderTextBox.Location = new System.Drawing.Point(136, 132);
+            this.selectedFolderTextBox.Name = "selectedFolderTextBox";
+            this.selectedFolderTextBox.ReadOnly = true;
+            this.selectedFolderTextBox.Size = new System.Drawing.Size(285, 22);
+            this.selectedFolderTextBox.TabIndex = 18;
+            // 
+            // selectFolderButton
+            // 
+            this.selectFolderButton.AutoSize = true;
+            this.selectFolderButton.Location = new System.Drawing.Point(20, 130);
+            this.selectFolderButton.Name = "selectFolderButton";
+            this.selectFolderButton.Size = new System.Drawing.Size(107, 27);
+            this.selectFolderButton.TabIndex = 17;
+            this.selectFolderButton.Text = "Select Folder";
+            this.selectFolderButton.UseVisualStyleBackColor = true;
+            this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
             // 
             // PatientDataGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.ClientSize = new System.Drawing.Size(440, 287);
+            this.Controls.Add(this.selectedFolderTextBox);
+            this.Controls.Add(this.selectFolderButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "PatientDataGui";
             this.Text = "Patient Data";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PatientDataGui_FormClosing);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox selectedFolderTextBox;
+        private System.Windows.Forms.Button selectFolderButton;
+        private System.Windows.Forms.FolderBrowserDialog patientDataFolderBrowserDialog;
     }
 }

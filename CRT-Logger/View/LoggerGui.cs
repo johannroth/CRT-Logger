@@ -25,9 +25,12 @@ namespace CRT_Logger
 
         private Services.ModeManager modeManager;
 
+        private View.PatientDataGui patientDataGui;
+
         public LoggerGui()
         {
             InitializeComponent();
+            patientDataGui = new View.PatientDataGui();
         }
 
         // Delegates to ensure thread safety.
@@ -465,7 +468,28 @@ namespace CRT_Logger
                 selectedFolderTextBox.SelectionStart = selectedFolderTextBox.TextLength;
                 selectedFolderTextBox.ScrollToCaret();
                 selectedFolderTextBox.BackColor = SystemColors.Control;
+
+                // If no valid folder has already been selected in patientDataGui
+                // and a valid folder has already been selected in loggerGui,
+                // use the valid folder of loggerGui in patientDataGui.
+                if (filePathOk && !patientDataGui.FilePathOk())
+                {
+                    patientDataGui.SetPatientDataFolder(selectedFolderTextBox.Text);
+                }
             }
+        }
+
+        private void patientFileButton_Click(object sender, EventArgs e)
+        {
+            // If no valid folder has already been selected in patientDataGui
+            // and a valid folder has already been selected in loggerGui,
+            // use the valid folder of loggerGui in patientDataGui.
+            if (filePathOk && !patientDataGui.FilePathOk())
+            {
+                patientDataGui.SetPatientDataFolder(selectedFolderTextBox.Text);
+            }
+            patientDataGui.Show();
+            patientDataGui.WindowState = FormWindowState.Normal;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoggerGui));
             this.modeAVLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.modeAV320Button = new System.Windows.Forms.Button();
             this.modeAV320Counter = new System.Windows.Forms.Label();
@@ -944,6 +945,7 @@
             this.patientFileButton.TabIndex = 10;
             this.patientFileButton.Text = "Patient File";
             this.patientFileButton.UseVisualStyleBackColor = true;
+            this.patientFileButton.Click += new System.EventHandler(this.patientFileButton_Click);
             // 
             // startButton
             // 
@@ -1073,6 +1075,7 @@
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.modePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoggerGui";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
