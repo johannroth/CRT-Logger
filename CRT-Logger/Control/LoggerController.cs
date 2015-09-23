@@ -12,7 +12,6 @@ namespace CRT_Logger.Control
     {
         private LoggerGui loggerGui;
         private Services.ModeManager modeManager;
-        private bool measurementRunning;
         private Services.Ticker secTicker;
         private Services.Ticker modeSecTicker;
         private Services.Ticker measurementSecTicker;
@@ -141,7 +140,6 @@ namespace CRT_Logger.Control
                     loggerGui.ResetModeCounters();
                     loggerGui.SetTimeInMeasurement("00:00:00");
                     loggerGui.SetRecordingStatus(start);
-                    measurementRunning = false;
                 }
             }
             else
@@ -155,7 +153,6 @@ namespace CRT_Logger.Control
                     InitializeLogFile();                    
 
                     measurementSecTicker.StartTicker();
-                    measurementRunning = true;
                     modeManager.SetNoModeActive();
                     loggerGui.EnableModeButtons(start);
                     loggerGui.EnableStartStopButtons(!start);
