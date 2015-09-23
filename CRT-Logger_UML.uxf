@@ -7,7 +7,7 @@
       <x>81</x>
       <y>72</y>
       <w>495</w>
-      <h>1269</h>
+      <h>1305</h>
     </coordinates>
     <panel_attributes>LoggerGui ( View )
 --
@@ -86,6 +86,7 @@
 + string GetCustomText(textBox)
 + string GetSelectedFolder()
 + bool FilePathOk()
++ string GetPatientNumber()
 
 ++ void EnableModeButtons(bool enable)
 ++ void EnableStartStopButtons(bool enableStart)
@@ -99,6 +100,7 @@
 ++ void ResetTimeInMode ()
 ++ void AddLogLine (string logLine)
 ++ void ResetLog ()
+++ void SetCurrentFile(string filePath)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -190,7 +192,7 @@ m2=n
       <x>621</x>
       <y>126</y>
       <w>504</w>
-      <h>279</h>
+      <h>315</h>
     </coordinates>
     <panel_attributes>LoggerController ( Control )
 --
@@ -200,6 +202,7 @@ m2=n
 - Ticker secTicker
 - Ticker modeSecTicker
 - DateTime measurementStartTime
+- string currentFile
 --
 + GuiController(loggerGui, modeManager)
     loggerGui.modeButtonClick += OnModeButtonClick
@@ -208,6 +211,7 @@ m2=n
 
 - void CreateLogLine(mode)
 - string CreateLogLineString(text)
+- void InitializeLogFile()
 	
 - void OnModeButtonClick(object sender, ModeButtonClickEventArgs e)
 - void OnStartStopEvent(object sender, StartStopEventArgs e)
@@ -232,7 +236,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>639</x>
-      <y>423</y>
+      <y>495</y>
       <w>351</w>
       <h>90</h>
     </coordinates>
@@ -250,7 +254,7 @@ m2=n
     <id>UMLClass</id>
     <coordinates>
       <x>621</x>
-      <y>531</y>
+      <y>594</y>
       <w>405</w>
       <h>198</h>
     </coordinates>
@@ -320,25 +324,25 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>639</x>
-      <y>396</y>
+      <y>432</y>
       <w>27</w>
-      <h>45</h>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>621</x>
-      <y>396</y>
+      <y>432</y>
       <w>27</w>
-      <h>153</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -405,13 +409,13 @@ m2=n
     <id>Relation</id>
     <coordinates>
       <x>1080</x>
-      <y>396</y>
+      <y>432</y>
       <w>27</w>
-      <h>450</h>
+      <h>414</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;480.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -432,13 +436,13 @@ FolderBrowserDialog patientDataFolderDialog
     <id>Relation</id>
     <coordinates>
       <x>1044</x>
-      <y>396</y>
+      <y>432</y>
       <w>27</w>
-      <h>675</h>
+      <h>639</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;730.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;690.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

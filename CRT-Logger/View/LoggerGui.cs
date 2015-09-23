@@ -44,6 +44,7 @@ namespace CRT_Logger
         public delegate void ResetTimeInModeSafely();
         public delegate void SetTimeInMeasurementSafely(string time);
         public delegate void SetRecordingStatusSafely(bool isRecording);
+        public delegate void SetCurrentFileSafely(string filePath);
 
         /// <summary>
         /// Adds the specified string with a following NewLine-command to the logTextBox. 
@@ -298,6 +299,24 @@ namespace CRT_Logger
                 
             }
         }
+        /// <summary>
+        /// Displays path of current file.
+        /// </summary>
+        /// <param name="filePath">Path of current file as string.</param>
+        public void SetCurrentFile(string filePath)
+        {
+            if (this.InvokeRequired)
+            {
+                SetCurrentFileSafely d = new SetCurrentFileSafely(SetCurrentFile);
+                Invoke(d, new object[] { filePath });
+            }
+            else
+            {
+                currentFileTextBox.Text = filePath;
+                currentFileTextBox.SelectionStart = currentFileTextBox.TextLength;
+                currentFileTextBox.ScrollToCaret();
+            }
+        }
 
         public void InitializeModes(Services.ModeManager modeManager)
         {
@@ -349,6 +368,18 @@ namespace CRT_Logger
         public bool FilePathOk()
         {
             return filePathOk;
+        }
+        /// <summary>
+        /// Returns string containing the patient number.
+        /// </summary>
+        public string GetPatientNumber()
+        {
+            string patientNumber = patientNumberTextbox.Text;
+            if (patientNumber == "")
+            {
+                patientNumber = "00";
+            }
+            return patientNumber;
         }
 
         // Eventhandlers

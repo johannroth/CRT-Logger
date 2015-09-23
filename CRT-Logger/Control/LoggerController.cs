@@ -18,6 +18,7 @@ namespace CRT_Logger.Control
         private Services.Ticker measurementSecTicker;
         private Services.Clock clock;
         private DateTime measurementStartTime;
+        private string currentFile;
 
         public LoggerController(LoggerGui loggerGui)
         {
@@ -74,6 +75,20 @@ namespace CRT_Logger.Control
 
             return String.Format("{0}, {1}, {2}", time, runningFor, customLogNote);
         }
+        /// <summary>
+        /// Creates filePath from folder and name. Sets path on gui and
+        /// initializes a new TxtWriter
+        /// </summary>
+        private void InitializeLogFile()
+        {
+            string patientNumber = loggerGui.GetPatientNumber();
+            string startTimeString = measurementStartTime.ToString("yyyyMMdd_HHmmss");
+            string fileName = string.Format("{0}_Pt{1}.txt", startTimeString, patientNumber);
+            string filePath = loggerGui.GetSelectedFolder() + @"\" + fileName;
+            loggerGui.SetCurrentFile(filePath);
+
+            // Initialize TxtWriter
+        }
 
         private void OnNewActiveModeEvent(object sender, NewActiveModeEventArgs e)
         {
@@ -109,7 +124,9 @@ namespace CRT_Logger.Control
             bool start = e.start;
             if(!start)
             {
+                // Create stopLogLine before showing messageBox to get proper time stamp.
                 string stopLogLine = CreateLogLineString("STOP");
+
                 if (MessageBox.Show("Do you really want to finish measurement? Timers will be reset!",
                 "End Measurement", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
@@ -134,6 +151,9 @@ namespace CRT_Logger.Control
                 {
                     // Code for start routine.
                     measurementStartTime = clock.GetDateTime();
+
+                    InitializeLogFile();                    
+
                     measurementSecTicker.StartTicker();
                     measurementRunning = true;
                     modeManager.SetNoModeActive();

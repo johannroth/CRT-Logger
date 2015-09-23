@@ -93,7 +93,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.currentTimeStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.recordingStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusMessageLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.patientFileButton = new System.Windows.Forms.Button();
@@ -890,8 +889,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.currentTimeStatusLabel,
-            this.recordingStatusLabel,
-            this.statusMessageLabel});
+            this.recordingStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 605);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(853, 26);
@@ -916,14 +914,6 @@
             this.recordingStatusLabel.Size = new System.Drawing.Size(180, 21);
             this.recordingStatusLabel.Text = "Not Recording";
             this.recordingStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // statusMessageLabel
-            // 
-            this.statusMessageLabel.AutoSize = false;
-            this.statusMessageLabel.Name = "statusMessageLabel";
-            this.statusMessageLabel.Size = new System.Drawing.Size(500, 21);
-            this.statusMessageLabel.Text = "Bereit";
-            this.statusMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
@@ -1170,7 +1160,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel currentTimeStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel recordingStatusLabel;
-        private System.Windows.Forms.ToolStripStatusLabel statusMessageLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button patientFileButton;
