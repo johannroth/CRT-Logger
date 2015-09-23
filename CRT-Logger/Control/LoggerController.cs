@@ -109,11 +109,12 @@ namespace CRT_Logger.Control
             bool start = e.start;
             if(!start)
             {
+                string stopLogLine = CreateLogLineString("STOP");
                 if (MessageBox.Show("Do you really want to finish measurement? Timers will be reset!",
                 "End Measurement", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     // Code for stop routine.
-                    loggerGui.AddLogLine(CreateLogLineString("STOP"));
+                    loggerGui.AddLogLine(stopLogLine);
                     modeSecTicker.StopTicker();
                     measurementSecTicker.StopTicker();
                     loggerGui.ResetTimeInMode();

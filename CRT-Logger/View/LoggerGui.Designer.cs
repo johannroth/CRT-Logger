@@ -102,7 +102,7 @@
             this.patientNumberTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.selectFolderButton = new System.Windows.Forms.Button();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.logFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.selectedFolderTextBox = new System.Windows.Forms.TextBox();
             this.currentFileTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -1004,6 +1004,7 @@
             this.selectFolderButton.TabIndex = 15;
             this.selectFolderButton.Text = "Select Folder";
             this.selectFolderButton.UseVisualStyleBackColor = true;
+            this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
             // 
             // selectedFolderTextBox
             // 
@@ -1184,7 +1185,7 @@
         private System.Windows.Forms.TextBox patientNumberTextbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button selectFolderButton;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.FolderBrowserDialog logFolderBrowserDialog;
         private System.Windows.Forms.TextBox selectedFolderTextBox;
         private System.Windows.Forms.TextBox currentFileTextBox;
         private System.Windows.Forms.Label label5;

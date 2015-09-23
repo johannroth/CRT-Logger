@@ -15,6 +15,7 @@ namespace CRT_Logger
     {
         private int timeInMode = 0;
         private bool isRecording = false;
+        private bool filePathOk = false;
 
         public delegate void ModeButtonClickHandler(object sender, ModeButtonClickEventArgs e);
         public event ModeButtonClickHandler modeButtonClick;
@@ -285,7 +286,7 @@ namespace CRT_Logger
                 if (isRecording)
                 {
                     this.isRecording = isRecording;
-                    recordingStatusLabel.Text = "Recording";
+                    recordingStatusLabel.Text = "Recording (00:00:00)";
                     recordingStatusLabel.BackColor = Color.LightSalmon;
                 }
                 else
@@ -357,10 +358,20 @@ namespace CRT_Logger
         }
         private void startButton_Click(object sender, EventArgs e)
         {
-            StartStopEventArgs args = new StartStopEventArgs();
-            args.start = true;
-            args.startStopButton = sender as Button;
-            startStopEvent(this, args);
+            // Only when a valid path is selected you will be able to start
+            // the measurement.
+            if (filePathOk)
+            {
+                StartStopEventArgs args = new StartStopEventArgs();
+                args.start = true;
+                args.startStopButton = sender as Button;
+                startStopEvent(this, args);
+            }
+            else
+            {
+                MessageBox.Show("Select a valid folder first!", "Folder missing", MessageBoxButtons.OK);
+            }
+            
         }
         private void stopButton_Click(object sender, EventArgs e)
         {
@@ -375,7 +386,6 @@ namespace CRT_Logger
             args.modeButton = sender as Button;
             modeButtonClick(sender, args);
         }
-
         private void modeCustomNoteTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -389,6 +399,33 @@ namespace CRT_Logger
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 
+            }
+        }
+        private void selectFolderButton_Click(object sender, EventArgs e)
+        {
+            if (logFolderBrowserDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileFolder = logFolderBrowserDialog.SelectedPath;
+                string now = DateTime.Now.ToString("ddMMyyyy_HHmmss");
+
+                // If a folder was selected, try creating and deleting a new file
+                // to see if the user has the needed permission.
+                try
+                {
+                    var testFile = System.IO.File.Create(fileFolder + @"\" + now + @"_deleteme.txt");
+                    testFile.Close();
+                    System.IO.File.Delete(fileFolder + @"\" + now + @"_deleteme.txt");
+                }
+                catch
+                {
+                    selectedFolderTextBox.Text = "Can't write files to this folder!";
+                    selectedFolderTextBox.BackColor = Color.LightSalmon;
+                    filePathOk = false;
+                    return;
+                }
+                filePathOk = true;
+                selectedFolderTextBox.Text = fileFolder;
+                selectedFolderTextBox.BackColor = SystemColors.Control;
             }
         }
     }
