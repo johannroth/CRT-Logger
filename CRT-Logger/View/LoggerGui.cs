@@ -502,5 +502,14 @@ namespace CRT_Logger
                 e.SuppressKeyPress = true;
             }
         }
+
+        // Open current File, if it has been defined.
+        private void currentFileLabel_Click(object sender, EventArgs e)
+        {
+            if (currentFileTextBox.Text != "")
+            {
+                System.Diagnostics.Process.Start(currentFileTextBox.Text);
+            }
+        }
     }
 }

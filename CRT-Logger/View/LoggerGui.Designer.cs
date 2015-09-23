@@ -94,7 +94,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.currentTimeStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.recordingStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.currentFileLabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
             this.patientFileButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
@@ -921,14 +921,15 @@
             this.recordingStatusLabel.Text = "Not Recording";
             this.recordingStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // currentFileLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Current File:";
+            this.currentFileLabel.AutoSize = true;
+            this.currentFileLabel.Location = new System.Drawing.Point(440, 91);
+            this.currentFileLabel.Name = "currentFileLabel";
+            this.currentFileLabel.Size = new System.Drawing.Size(85, 17);
+            this.currentFileLabel.TabIndex = 7;
+            this.currentFileLabel.Text = "Current File:";
+            this.currentFileLabel.Click += new System.EventHandler(this.currentFileLabel_Click);
             // 
             // closeButton
             // 
@@ -1076,7 +1077,7 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.patientFileButton);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.currentFileLabel);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.logTextBox);
             this.Controls.Add(this.modePanel);
@@ -1169,7 +1170,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel currentTimeStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel recordingStatusLabel;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label currentFileLabel;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button patientFileButton;
         private System.Windows.Forms.Button startButton;
