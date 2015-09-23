@@ -428,18 +428,7 @@ namespace CRT_Logger
         }
         private void modeCustomNoteTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (isRecording)
-                {
-                    ModeButtonClickEventArgs args = new ModeButtonClickEventArgs();
-                    args.modeButton = modeCustomNoteButton;
-                    modeButtonClick(sender, args);
-                }
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-
-            }
+            
         }
         private void selectFolderButton_Click(object sender, EventArgs e)
         {
@@ -490,6 +479,28 @@ namespace CRT_Logger
             }
             patientDataGui.Show();
             patientDataGui.WindowState = FormWindowState.Normal;
+        }
+
+        private void anyTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                textBox.SelectAll();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+            if (textBox == modeCustomNoteTextBox && e.KeyCode == Keys.Enter)
+            {
+                if (isRecording)
+                {
+                    ModeButtonClickEventArgs args = new ModeButtonClickEventArgs();
+                    args.modeButton = modeCustomNoteButton;
+                    modeButtonClick(sender, args);
+                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

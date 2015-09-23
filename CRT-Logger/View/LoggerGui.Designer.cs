@@ -674,6 +674,7 @@
             this.modeAVc2TextBox.Name = "modeAVc2TextBox";
             this.modeAVc2TextBox.Size = new System.Drawing.Size(34, 22);
             this.modeAVc2TextBox.TabIndex = 23;
+            this.modeAVc2TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // modeAVc1Counter
             // 
@@ -706,6 +707,7 @@
             this.modeAVc1TextBox.Name = "modeAVc1TextBox";
             this.modeAVc1TextBox.Size = new System.Drawing.Size(34, 22);
             this.modeAVc1TextBox.TabIndex = 20;
+            this.modeAVc1TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // modeVVcLayoutPanel
             // 
@@ -759,6 +761,7 @@
             this.modeVVc2TextBox.Name = "modeVVc2TextBox";
             this.modeVVc2TextBox.Size = new System.Drawing.Size(34, 22);
             this.modeVVc2TextBox.TabIndex = 23;
+            this.modeVVc2TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // modeVVc1Counter
             // 
@@ -791,6 +794,7 @@
             this.modeVVc1TextBox.Name = "modeVVc1TextBox";
             this.modeVVc1TextBox.Size = new System.Drawing.Size(34, 22);
             this.modeVVc1TextBox.TabIndex = 20;
+            this.modeVVc1TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // modePanel
             // 
@@ -832,7 +836,7 @@
             this.modeCustomNoteTextBox.Name = "modeCustomNoteTextBox";
             this.modeCustomNoteTextBox.Size = new System.Drawing.Size(201, 22);
             this.modeCustomNoteTextBox.TabIndex = 22;
-            this.modeCustomNoteTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.modeCustomNoteTextBox_KeyDown);
+            this.modeCustomNoteTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // modeCustomNoteButton
             // 
@@ -883,6 +887,7 @@
             this.logTextBox.Size = new System.Drawing.Size(401, 475);
             this.logTextBox.TabIndex = 5;
             this.logTextBox.Text = "11:45:33.103, 00:00:21.104, AV 40, 1";
+            this.logTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // statusStrip1
             // 
@@ -977,6 +982,7 @@
             this.patientNumberTextbox.TabIndex = 13;
             this.patientNumberTextbox.Text = "00";
             this.patientNumberTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.patientNumberTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.anyTextBox_KeyDown);
             // 
             // label4
             // 

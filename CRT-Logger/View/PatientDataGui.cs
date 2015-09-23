@@ -83,5 +83,16 @@ namespace CRT_Logger.View
                 selectedFolderTextBox.BackColor = SystemColors.Control;
             }
         }
+
+        private void anyTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                TextBox textBox = sender as TextBox;
+                textBox.SelectAll();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
