@@ -162,7 +162,7 @@ namespace CRT_Logger.Control
                 }                
                 else
                 {
-                    MessageBox.Show("Select a valid folder first!", "Folder missing", MessageBoxButtons.OK);
+                    MessageBox.Show("Select a valid folder for the log file first!", "Folder missing", MessageBoxButtons.OK);
                 }
             }
         }

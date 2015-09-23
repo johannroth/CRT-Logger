@@ -462,6 +462,8 @@ namespace CRT_Logger
                 }
                 filePathOk = true;
                 selectedFolderTextBox.Text = fileFolder;
+                selectedFolderTextBox.SelectionStart = selectedFolderTextBox.TextLength;
+                selectedFolderTextBox.ScrollToCaret();
                 selectedFolderTextBox.BackColor = SystemColors.Control;
             }
         }
