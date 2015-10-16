@@ -62,7 +62,7 @@ namespace CRT_Logger.Control
             string runningFor = clock.GetTimeSinceStringLong(measurementStartTime);
             string logId = mode.GetLogId();
 
-            string logLine = String.Format("{0}, {1}, {2}", time,
+            string logLine = String.Format("{0} {1} {2}", time,
                 runningFor, logId);
 
             logFile.AddLine(logLine);
@@ -73,7 +73,7 @@ namespace CRT_Logger.Control
             string time = clock.GetDateTime().ToString("HH:mm:ss.fff");
             string runningFor = clock.GetTimeSinceStringLong(measurementStartTime);
 
-            return String.Format("{0}, {1}, {2}", time, runningFor, customLogNote);
+            return String.Format("{0} {1} {2}", time, runningFor, customLogNote);
         }
         /// <summary>
         /// Creates filePath from folder and name. Sets path on gui and
