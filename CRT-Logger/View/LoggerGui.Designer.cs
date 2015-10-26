@@ -945,6 +945,7 @@
             // patientFileButton
             // 
             this.patientFileButton.AutoSize = true;
+            this.patientFileButton.Enabled = false;
             this.patientFileButton.Location = new System.Drawing.Point(440, 12);
             this.patientFileButton.Name = "patientFileButton";
             this.patientFileButton.Size = new System.Drawing.Size(107, 27);
